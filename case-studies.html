@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Studies — IntegraTech Systems</title>
+  <meta name="description" content="IntegraTech case studies: real enterprise integration projects in fintech, banking, and industrial sectors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html">IntegraTech</a>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html" class="active">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <span class="eyebrow">Real projects, real results</span>
+        <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none">Case Studies</h1>
+        <p class="lead">
+          All projects are anonymised. Metrics and timelines are real.
+          We don't exaggerate — these are the actual results we delivered.
+        </p>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <section class="section page-main">
+      <div class="container" style="display:grid;gap:2rem">
+
+        <!-- Case 1 -->
+        <article class="panel case-card">
+          <div class="case-meta">
+            <span class="badge">🏦 Banking</span>
+            <span class="badge">NiFi + Kafka</span>
+            <span class="badge">3 weeks</span>
+          </div>
+          <h3>SWIFT ETL Pipeline: From 3-Day Outages to 99.97% Uptime</h3>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            A top-20 Russian bank had a SWIFT MT103 processing pipeline built on a brittle 
+            custom Java monolith. The system crashed under end-of-month load — every single month. 
+            The team was spending 2–3 days per incident on manual recovery.
+          </p>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+            We rebuilt the ingestion and transformation layer on Apache NiFi with Kafka as the 
+            durable backbone. Dead-letter handling, idempotent processors, and automated replay 
+            replaced the fragile manual procedures. Monitoring was wired to PagerDuty with 
+            runbooks for every alert.
+          </p>
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+            <li>Replaced monolithic SWIFT processor with NiFi flow + Kafka topic per message type</li>
+            <li>Implemented exactly-once semantics for financial message delivery</li>
+            <li>Automated reconciliation against НРД settlement records</li>
+            <li>Zero data loss during the first end-of-month cycle post-launch</li>
+          </ul>
+          <div class="case-result">
+            <div><strong>99.97%</strong><span>pipeline uptime</span></div>
+            <div><strong>3 days → 0</strong><span>manual recovery time</span></div>
+            <div><strong>3 weeks</strong><span>from audit to production</span></div>
+          </div>
+        </article>
+
+        <!-- Case 2 -->
+        <article class="panel case-card">
+          <div class="case-meta">
+            <span class="badge">📈 Trading</span>
+            <span class="badge">WebSocket + PostgreSQL</span>
+            <span class="badge">6 weeks</span>
+          </div>
+          <h3>МосБиржа Real-time Feed: 60% Latency Reduction on Market Data Pipeline</h3>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            A proprietary trading firm was receiving МосБиржа market data through a 
+            third-party vendor feed. p99 latency was hitting 180ms during volatile sessions — 
+            unacceptable for their algorithmic strategies. The vendor refused to SLA-guarantee 
+            improvements.
+          </p>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+            We built a direct WebSocket connection to МосБиржа FAST/FIXS feed, designed a 
+            low-latency normalisation layer in Java 21 with virtual threads, and stored 
+            tick data directly into partitioned PostgreSQL tables with BRIN indexes. 
+            The p99 dropped from 180ms to 72ms on day one.
+          </p>
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+            <li>Direct FAST protocol decoder — no vendor intermediary</li>
+            <li>Java 21 virtual threads handling 12 000 concurrent instrument subscriptions</li>
+            <li>Partitioned PostgreSQL tick storage with sub-millisecond write latency</li>
+            <li>Grafana dashboard for latency percentiles, gap detection, and reconnects</li>
+          </ul>
+          <div class="case-result">
+            <div><strong>60%</strong><span>latency reduction</span></div>
+            <div><strong>180ms → 72ms</strong><span>p99 market data latency</span></div>
+            <div><strong>12 000</strong><span>concurrent subscriptions</span></div>
+          </div>
+        </article>
+
+        <!-- Case 3 -->
+        <article class="panel case-card">
+          <div class="case-meta">
+            <span class="badge">🏛️ Government</span>
+            <span class="badge">NiFi + Greenplum</span>
+            <span class="badge">4 months</span>
+          </div>
+          <h3>ДИТ Москвы: City-Scale Data Integration for 40+ Source Systems</h3>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            Moscow's Department of Information Technology needed a unified data integration 
+            layer to consolidate operational data from 40+ municipal systems into a Greenplum 
+            analytical platform. Existing ETL was a patchwork of scheduled SQL scripts with 
+            no lineage, no monitoring, and daily failures.
+          </p>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+            We designed and deployed an Apache NiFi cluster that handles the full ingestion 
+            lifecycle — from REST and SOAP source APIs to schema validation, transformation, 
+            error handling, and lineage tracking. Every pipeline self-documents its state 
+            through structured logging and a custom Grafana dashboard.
+          </p>
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+            <li>NiFi cluster: 3-node HA with ZooKeeper, 40+ active flows</li>
+            <li>Schema Registry for all source contracts — breaking changes caught before ingestion</li>
+            <li>Full data lineage from source API to Greenplum analytical table</li>
+            <li>On-call runbook and automated alerting handed to the internal team</li>
+          </ul>
+          <div class="case-result">
+            <div><strong>40+</strong><span>source systems</span></div>
+            <div><strong>Daily failures → 0</strong><span>pipeline errors/month</span></div>
+            <div><strong>4 months</strong><span>design to production</span></div>
+          </div>
+        </article>
+
+        <!-- Case 4 -->
+        <article class="panel case-card">
+          <div class="case-meta">
+            <span class="badge">🔐 Enterprise</span>
+            <span class="badge">Headscale + OpenBao</span>
+            <span class="badge">2 weeks</span>
+          </div>
+          <h3>Private Corporate Network: Zero Big-Tech Dependency for a 30-Person Team</h3>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            A fintech company with remote employees across Russia, Georgia, and Israel needed 
+            a secure internal network that didn't route traffic through US-controlled cloud 
+            providers. Existing WireGuard setup required manual key management and had no 
+            access control policies.
+          </p>
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+            We deployed a self-hosted headscale controller with Tailscale clients, implemented 
+            ACL policies for network segmentation, added an XMPP Prosody messaging server, 
+            and integrated OpenBao for secrets rotation. Client onboarding was reduced to 
+            scanning a QR code.
+          </p>
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+            <li>Headscale controller on private VPS, exit nodes in DE and US</li>
+            <li>ACL policies: per-user access tiers, internet exit control</li>
+            <li>Self-hosted Prosody XMPP with end-to-end encrypted group chats</li>
+            <li>QR-code based onboarding page — client setup under 2 minutes</li>
+          </ul>
+          <div class="case-result">
+            <div><strong>30+</strong><span>team members connected</span></div>
+            <div><strong>2 min</strong><span>new client onboarding</span></div>
+            <div><strong>100%</strong><span>self-hosted, zero Big Tech</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <span class="eyebrow">Have a similar challenge?</span>
+            <h2 style="margin:0">We'd love to hear about your project.</h2>
+            <p style="color:var(--muted);margin:.8rem 0 0;max-width:52ch">
+              Describe your integration problem in a message — we'll respond within 24 hours 
+              with an honest assessment and rough scope.
+            </p>
+          </div>
+          <a class="button primary" href="contact.html">Contact us →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-brand">
+        <strong>IntegraTech Systems</strong>
+        <p>Enterprise integration engineering · fintech · industrial</p>
+      </div>
+      <nav class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

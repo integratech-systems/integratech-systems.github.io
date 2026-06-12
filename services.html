@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services — IntegraTech Systems</title>
+  <meta name="description" content="IntegraTech services: data pipeline engineering, financial system integration, Java microservices, DevSecOps, private network infrastructure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html">IntegraTech</a>
+      <nav class="site-nav">
+        <a href="services.html" class="active">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <span class="eyebrow">What we offer</span>
+        <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none">Services</h1>
+        <p class="lead">
+          We deliver end-to-end integration engineering — from architecture consulting to 
+          production-grade system implementation and long-term support.
+        </p>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <section class="section page-main">
+      <div class="container">
+        <div class="services-grid">
+
+          <article class="panel service-card">
+            <div class="card-icon blue" style="margin-bottom:1.2rem">🔄</div>
+            <span class="eyebrow" style="margin-bottom:.5rem">Core service</span>
+            <h3>Data Pipeline Engineering</h3>
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+              Design and implementation of enterprise data pipelines using Apache NiFi and Apache Kafka.
+              We handle high-throughput scenarios (50k+ msg/sec), exactly-once delivery, CDC from 
+              Oracle/PostgreSQL, and integration with analytical databases including Greenplum.
+            </p>
+            <ul>
+              <li>Apache NiFi flow design, cluster setup and tuning</li>
+              <li>Kafka topic architecture, schema registry, stream processing</li>
+              <li>Debezium CDC connectors for real-time database sync</li>
+              <li>Greenplum / PostgreSQL analytical integration</li>
+              <li>Dead-letter queues, replay, monitoring and alerting</li>
+            </ul>
+            <p class="price">Engagement model: project-based or retainer · from €8 000 / project</p>
+          </article>
+
+          <article class="panel service-card">
+            <div class="card-icon cyan" style="margin-bottom:1.2rem">🏦</div>
+            <span class="eyebrow" style="margin-bottom:.5rem">Fintech speciality</span>
+            <h3>Financial System Integration</h3>
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+              We've built production connectors and adapters for the most demanding financial 
+              infrastructure in Russia and the CIS. SWIFT, НРД, МосБиржа — we know these 
+              protocols inside out and deliver integrations that don't fail silently.
+            </p>
+            <ul>
+              <li>SWIFT MT103 / MT202 / MX ISO 20022 message processing</li>
+              <li>НРД API integration — settlement, depository operations</li>
+              <li>МосБиржа WebSocket and REST API connectors</li>
+              <li>Banking core system adapters (custom protocols, legacy XML)</li>
+              <li>FIX protocol implementation for trading systems</li>
+            </ul>
+            <p class="price">Engagement model: fixed-scope contract · from €15 000</p>
+          </article>
+
+          <article class="panel service-card">
+            <div class="card-icon purple" style="margin-bottom:1.2rem">⚡</div>
+            <span class="eyebrow" style="margin-bottom:.5rem">Application layer</span>
+            <h3>Java Microservices &amp; API Design</h3>
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+              Modern Java 17/21 backend engineering with Spring Boot 3, WebFlux reactive stack, 
+              and virtual threads. We design API gateways with zero-trust security and 
+              event-driven architectures that scale without re-architecture.
+            </p>
+            <ul>
+              <li>Spring Boot 3 microservices with reactive WebFlux</li>
+              <li>Java 21 virtual threads for high-concurrency workloads</li>
+              <li>OAuth2 / JWT / mTLS API gateway design</li>
+              <li>Event-driven architecture with Kafka and Outbox pattern</li>
+              <li>Groovy scripting for NiFi processors and DSL tooling</li>
+            </ul>
+            <p class="price">Engagement model: T&amp;M or project · from €6 000 / month</p>
+          </article>
+
+          <article class="panel service-card">
+            <div class="card-icon green" style="margin-bottom:1.2rem">🛡️</div>
+            <span class="eyebrow" style="margin-bottom:.5rem">Infrastructure</span>
+            <h3>DevSecOps &amp; Kubernetes</h3>
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+              We build and operate Kubernetes-based infrastructure with GitOps workflows, 
+              secrets management, and security posture that satisfies financial regulators. 
+              Zero-downtime deployments, auto-scaling, and runbooks included.
+            </p>
+            <ul>
+              <li>Kubernetes cluster design, Helm chart authoring</li>
+              <li>GitLab CI / GitHub Actions pipeline architecture</li>
+              <li>OpenBao / HashiCorp Vault secrets management</li>
+              <li>Network security policies, pod security standards</li>
+              <li>Observability: Prometheus, Grafana, Loki, alerting</li>
+            </ul>
+            <p class="price">Engagement model: retainer or project · from €5 000 / month</p>
+          </article>
+
+          <article class="panel service-card">
+            <div class="card-icon blue" style="margin-bottom:1.2rem">🌐</div>
+            <span class="eyebrow" style="margin-bottom:.5rem">Independence</span>
+            <h3>Private Corporate Infrastructure</h3>
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+              Self-hosted corporate infrastructure that doesn't depend on Big Tech clouds. 
+              Mesh VPN networks for secure remote teams, private XMPP messaging servers, 
+              and secrets management systems under your full control.
+            </p>
+            <ul>
+              <li>Headscale + Tailscale mesh VPN for distributed teams</li>
+              <li>XMPP / Prosody self-hosted corporate messenger</li>
+              <li>OpenBao secrets and credentials management</li>
+              <li>Access control policies and network segmentation</li>
+              <li>Client onboarding automation and documentation</li>
+            </ul>
+            <p class="price">Engagement model: setup + support · from €3 500</p>
+          </article>
+
+          <article class="panel service-card">
+            <div class="card-icon cyan" style="margin-bottom:1.2rem">🔎</div>
+            <span class="eyebrow" style="margin-bottom:.5rem">Advisory</span>
+            <h3>Architecture Consulting</h3>
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+              Not ready to outsource implementation? We provide expert architecture reviews, 
+              integration audits, and technical strategy — so your team builds the right 
+              thing from the start and avoids expensive re-architecture later.
+            </p>
+            <ul>
+              <li>Integration landscape audit with findings report</li>
+              <li>Architecture design session + decision records</li>
+              <li>NiFi / Kafka performance tuning consultation</li>
+              <li>Security architecture review for fintech workloads</li>
+              <li>Team mentoring and tech lead support</li>
+            </ul>
+            <p class="price">Engagement model: daily rate or fixed advisory · from €1 200 / day</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <span class="eyebrow">Not sure which service fits?</span>
+            <h2 style="margin:0">Let's talk about your project.</h2>
+            <p style="color:var(--muted);margin:.8rem 0 0;max-width:52ch">
+              A 30-minute call is enough to understand your integration challenges 
+              and give you a concrete recommendation.
+            </p>
+          </div>
+          <a class="button primary" href="contact.html">Book a free call →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-brand">
+        <strong>IntegraTech Systems</strong>
+        <p>Enterprise integration engineering · fintech · industrial</p>
+      </div>
+      <nav class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

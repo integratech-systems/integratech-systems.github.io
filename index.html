@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IntegraTech Systems — Enterprise Integration Engineering</title>
+  <meta name="description" content="IntegraTech builds enterprise-grade integration systems for financial and industrial organizations. Apache NiFi, Kafka, SWIFT, Java 21, Kubernetes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html">IntegraTech</a>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── HERO ─────────────────────────────────────── -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;">
+            <span class="eyebrow" style="margin:0">Enterprise Integration Engineering</span>
+            <span class="badge">🟢 Available Q3 2026</span>
+          </div>
+          <h1>We build systems where simple APIs don't work.</h1>
+          <p class="lead">
+            IntegraTech designs and delivers enterprise integration platforms for financial 
+            institutions and industrial enterprises — from SWIFT pipelines to real-time 
+            event-driven architectures.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="contact.html">
+              Start a project →
+            </a>
+            <a class="button secondary" href="case-studies.html">
+              View case studies
+            </a>
+          </div>
+          <ul class="mini-metrics">
+            <li>
+              <strong>12+</strong>
+              <span>enterprise projects delivered</span>
+            </li>
+            <li>
+              <strong>99.9%</strong>
+              <span>pipeline uptime SLA</span>
+            </li>
+            <li>
+              <strong>Java 21</strong>
+              <span>modern stack, zero legacy tech debt</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-panel">
+          <div class="terminal-card">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">integratech-pipeline.sh</span>
+            </div>
+            <div class="terminal-body">
+              <pre><code><span class="t-prompt">$</span> <span class="t-cmd">./nifi-pipeline status</span>
+
+<span class="t-ok">✓</span> SWIFT MT103 → NiFi → Kafka   <span class="t-ok">[running]</span>
+<span class="t-ok">✓</span> Kafka → Greenplum CDC         <span class="t-ok">[running]</span>
+<span class="t-ok">✓</span> МосБиржа WebSocket feed       <span class="t-ok">[running]</span>
+<span class="t-ok">✓</span> NРД settlement sync           <span class="t-ok">[running]</span>
+<span class="t-dim">─────────────────────────────────</span>
+<span class="t-ok">✓</span> throughput:  <span class="t-cmd">48 200 msg/sec</span>
+<span class="t-ok">✓</span> latency p99: <span class="t-cmd">3.2 ms</span>
+<span class="t-ok">✓</span> uptime:      <span class="t-cmd">99.97 %</span>
+
+<span class="t-prompt">$</span> <span class="t-cmd">kubectl get pods -n integrations</span>
+<span class="t-dim">NAME                    READY   STATUS</span>
+nifi-0                  <span class="t-ok">1/1</span>     Running
+kafka-broker-0          <span class="t-ok">1/1</span>     Running
+swift-gateway-7f9       <span class="t-ok">1/1</span>     Running
+api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- ── WHAT WE DO ──────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Core capabilities</span>
+          <h2>Engineering where complexity is the norm.</h2>
+          <p class="lead" style="margin-top:.8rem">
+            We work in the integrations layer — the part of the stack that connects legacy financial 
+            systems to modern infrastructure, where uptime, data consistency and security are non-negotiable.
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="panel">
+            <div class="card-icon blue">🔄</div>
+            <h3>Data Pipeline Engineering</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
+              Apache NiFi + Kafka end-to-end pipelines with exactly-once semantics, CDC from 
+              PostgreSQL/Oracle, and Greenplum analytics integration. Handles 50k+ msg/sec.
+            </p>
+          </article>
+          <article class="panel">
+            <div class="card-icon cyan">🏦</div>
+            <h3>Financial System Integration</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
+              SWIFT MT/MX, НРД, МосБиржа API, banking core systems. We've built production 
+              connectors for the most demanding financial infrastructure in Russia and the CIS.
+            </p>
+          </article>
+          <article class="panel">
+            <div class="card-icon purple">⚡</div>
+            <h3>Java Microservices</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
+              Java 17/21 with Spring Boot 3, WebFlux reactive stack, virtual threads, and 
+              event-driven design. API gateways with OAuth2, JWT, mTLS for zero-trust environments.
+            </p>
+          </article>
+          <article class="panel">
+            <div class="card-icon green">🛡️</div>
+            <h3>DevSecOps &amp; Infrastructure</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
+              Kubernetes, GitLab CI/CD, OpenBao secrets management, zero-downtime deployments. 
+              Security-first by design — not added as an afterthought.
+            </p>
+          </article>
+          <article class="panel">
+            <div class="card-icon blue">🌐</div>
+            <h3>Private Network Infrastructure</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
+              Self-hosted mesh VPN networks (Tailscale/headscale), private XMPP messaging, 
+              isolated corporate infrastructure free from Big Tech dependency.
+            </p>
+          </article>
+          <article class="panel">
+            <div class="card-icon cyan">📊</div>
+            <h3>Real-time &amp; Analytics</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
+              WebSocket feeds, trading system backends, time-series analytics on Greenplum. 
+              From raw market data to actionable business intelligence in milliseconds.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECH STACK ──────────────────────────────── -->
+    <section class="section section-dark">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Technology stack</span>
+          <h2>Battle-tested stack for mission-critical workloads.</h2>
+          <p class="lead" style="margin-top:.8rem">
+            We choose boring, proven technology for the core — and modern tooling for developer experience. 
+            No hype-driven architecture decisions.
+          </p>
+          <a class="button primary" href="open-source.html" style="margin-top:1.5rem;display:inline-flex">
+            Explore full stack →
+          </a>
+        </div>
+        <div class="stack-list">
+          <div>
+            <strong>Data &amp; Integration</strong>
+            <span>Apache NiFi · Kafka · Debezium · Greenplum · PostgreSQL</span>
+          </div>
+          <div>
+            <strong>Application Layer</strong>
+            <span>Java 21 · Spring Boot 3 · WebFlux · Groovy · Kotlin</span>
+          </div>
+          <div>
+            <strong>Infrastructure</strong>
+            <span>Kubernetes · Docker · GitLab CI · GitHub Actions</span>
+          </div>
+          <div>
+            <strong>Security</strong>
+            <span>OpenBao · mTLS · OAuth2 · JWT · Vault · Headscale</span>
+          </div>
+          <div>
+            <strong>Financial Protocols</strong>
+            <span>SWIFT MT/MX · FIX · НРД API · МосБиржа WebSocket</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── APPROACH ──────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading" style="text-align:center;max-width:600px;margin:0 auto 3rem">
+          <span class="eyebrow">How we work</span>
+          <h2>From legacy mess to reliable pipelines.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="panel" style="text-align:center;padding:2rem 1.5rem">
+            <div style="font-size:2rem;margin-bottom:1rem">🔍</div>
+            <h3>1. Audit &amp; Architecture</h3>
+            <p style="color:var(--muted);font-size:.93rem;line-height:1.7">
+              We map your existing integration landscape, identify bottlenecks and failure modes, 
+              and design a target architecture with clear migration paths.
+            </p>
+          </article>
+          <article class="panel" style="text-align:center;padding:2rem 1.5rem">
+            <div style="font-size:2rem;margin-bottom:1rem">⚙️</div>
+            <h3>2. Build &amp; Integrate</h3>
+            <p style="color:var(--muted);font-size:.93rem;line-height:1.7">
+              We implement pipelines, APIs, and connectors with production-grade monitoring, 
+              error handling, and exactly-once delivery guarantees where required.
+            </p>
+          </article>
+          <article class="panel" style="text-align:center;padding:2rem 1.5rem">
+            <div style="font-size:2rem;margin-bottom:1rem">🚀</div>
+            <h3>3. Deploy &amp; Operate</h3>
+            <p style="color:var(--muted);font-size:.93rem;line-height:1.7">
+              GitOps deployment, runbooks, alerting, and SLA monitoring. We don't disappear 
+              after go-live — we stay until the system is stable and your team is confident.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <span class="eyebrow">Ready to integrate?</span>
+            <h2 style="margin:0">Let's solve your hardest integration problem.</h2>
+            <p style="color:var(--muted);margin:.8rem 0 0;max-width:52ch">
+              Whether it's a legacy SWIFT connector, a NiFi pipeline drowning under load, 
+              or a greenfield event-driven architecture — we've seen it before.
+            </p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.8rem;flex-shrink:0">
+            <a class="button primary" href="contact.html">Get in touch</a>
+            <a class="button secondary" href="case-studies.html">See our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-brand">
+        <strong>IntegraTech Systems</strong>
+        <p>Enterprise integration engineering · fintech · industrial</p>
+      </div>
+      <nav class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

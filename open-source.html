@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech Stack — IntegraTech Systems</title>
+  <meta name="description" content="IntegraTech technology stack: Apache NiFi, Kafka, Java 21, Spring Boot, Kubernetes, OpenBao, headscale and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html">IntegraTech</a>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html" class="active">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <span class="eyebrow">Our toolbox</span>
+        <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none">Technology Stack</h1>
+        <p class="lead">
+          We choose technology based on production track record and operational simplicity.
+          Here's what we actually use — and why.
+        </p>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <section class="section page-main">
+      <div class="container" style="display:grid;gap:3rem">
+
+        <!-- Data & Integration -->
+        <div>
+          <span class="eyebrow">Data &amp; Integration</span>
+          <h2 style="font-size:1.8rem;margin-bottom:.8rem">The integration layer</h2>
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+            Apache NiFi is our primary tool for data movement and transformation. It provides
+            visual flow design, built-in provenance (data lineage), back-pressure handling,
+            and 300+ built-in processors. Kafka is the durable backbone where reliability 
+            matters more than simplicity.
+          </p>
+          <div class="tech-grid">
+            <div class="tech-tag"><span class="dot dot-blue"></span>Apache NiFi</div>
+            <div class="tech-tag"><span class="dot dot-blue"></span>Apache Kafka</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Debezium CDC</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Kafka Connect</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>Greenplum</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>PostgreSQL</div>
+            <div class="tech-tag"><span class="dot dot-blue"></span>Schema Registry</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Apache Avro</div>
+          </div>
+        </div>
+
+        <!-- Application Layer -->
+        <div>
+          <span class="eyebrow">Application layer</span>
+          <h2 style="font-size:1.8rem;margin-bottom:.8rem">Java ecosystem</h2>
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+            Java 21 with virtual threads eliminates the need for reactive plumbing in most 
+            cases while keeping throughput high. Spring Boot 3 with Spring Security, WebFlux 
+            for truly async workloads, and Groovy for scripting inside NiFi processors.
+          </p>
+          <div class="tech-grid">
+            <div class="tech-tag"><span class="dot dot-blue"></span>Java 21</div>
+            <div class="tech-tag"><span class="dot dot-blue"></span>Spring Boot 3</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Spring WebFlux</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Spring Security</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>Groovy</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>Kotlin</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>Maven / Gradle</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>JUnit 5</div>
+          </div>
+        </div>
+
+        <!-- Infrastructure -->
+        <div>
+          <span class="eyebrow">Infrastructure &amp; DevOps</span>
+          <h2 style="font-size:1.8rem;margin-bottom:.8rem">Cloud-native operations</h2>
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+            Kubernetes for orchestration, GitLab CI / GitHub Actions for delivery, Helm for
+            packaging. We instrument everything with Prometheus + Grafana and wire alerts to 
+            PagerDuty or Telegram for on-call. Deployments are GitOps — config lives in Git,
+            not in someone's head.
+          </p>
+          <div class="tech-grid">
+            <div class="tech-tag"><span class="dot dot-blue"></span>Kubernetes</div>
+            <div class="tech-tag"><span class="dot dot-blue"></span>Docker</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Helm</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>GitLab CI</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>GitHub Actions</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>ArgoCD</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>Prometheus</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>Grafana</div>
+          </div>
+        </div>
+
+        <!-- Security -->
+        <div>
+          <span class="eyebrow">Security</span>
+          <h2 style="font-size:1.8rem;margin-bottom:.8rem">Zero-trust by default</h2>
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+            OpenBao (an open-source HashiCorp Vault fork) manages all secrets — no credentials 
+            in environment variables, no plaintext configs. mTLS between services, OAuth2/JWT 
+            at API boundaries, and network-level segmentation with headscale ACL policies.
+          </p>
+          <div class="tech-grid">
+            <div class="tech-tag"><span class="dot dot-blue"></span>OpenBao / Vault</div>
+            <div class="tech-tag"><span class="dot dot-blue"></span>OAuth2 / OIDC</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>JWT / mTLS</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>Let's Encrypt</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>Headscale VPN</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>Tailscale</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>XMPP / Prosody</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>WireGuard</div>
+          </div>
+        </div>
+
+        <!-- Financial Protocols -->
+        <div>
+          <span class="eyebrow">Financial protocols</span>
+          <h2 style="font-size:1.8rem;margin-bottom:.8rem">Fintech-specific expertise</h2>
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+            Most integration engineers don't know SWIFT from SEPA or FIX from FAST. We do. 
+            This expertise is rare and took years of production work to accumulate. It's one 
+            of the core reasons our clients in banking and trading choose us over generalist vendors.
+          </p>
+          <div class="tech-grid">
+            <div class="tech-tag"><span class="dot dot-blue"></span>SWIFT MT / MX</div>
+            <div class="tech-tag"><span class="dot dot-blue"></span>ISO 20022</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>FIX Protocol</div>
+            <div class="tech-tag"><span class="dot dot-cyan"></span>FAST / FIXS</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>НРД API</div>
+            <div class="tech-tag"><span class="dot dot-purple"></span>МосБиржа API</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>WebSocket feeds</div>
+            <div class="tech-tag"><span class="dot dot-green"></span>REST / SOAP / XML</div>
+          </div>
+        </div>
+
+        <!-- Philosophy box -->
+        <div class="panel" style="padding:2.5rem">
+          <span class="eyebrow">Engineering philosophy</span>
+          <h2 style="font-size:1.8rem;margin-bottom:1.2rem">Why we don't chase trends</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+            <div>
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We use NiFi even though people say "just use Kafka"</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+                Because NiFi gives you data provenance, back-pressure handling, visual debugging, 
+                and 300 built-in processors. For complex ETL with many heterogeneous sources, 
+                it's the right tool — and our NiFi production experience proves it.
+              </p>
+            </div>
+            <div>
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We use Java 21 even though everyone says "go Rust"</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+                Because the Spring ecosystem, JVM tooling, and Java talent pool are unmatched 
+                for enterprise integration. Virtual threads solved the concurrency problem. 
+                Rewriting in Rust helps no one's SLA.
+              </p>
+            </div>
+            <div>
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We use OpenBao instead of commercial vaults</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+                Full control, no vendor lock-in, no licensing fees at scale. We self-host and 
+                operate OpenBao in production for our own infrastructure and clients — we know 
+                its failure modes and operational patterns.
+              </p>
+            </div>
+            <div>
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We build self-hosted infrastructure by default</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+                Headscale, Prosody, OpenBao — not because cloud is bad, but because for 
+                financial companies and regulated industries, data sovereignty and operational 
+                independence are a business requirement, not a preference.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-brand">
+        <strong>IntegraTech Systems</strong>
+        <p>Enterprise integration engineering · fintech · industrial</p>
+      </div>
+      <nav class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="open-source.html">Tech Stack</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
