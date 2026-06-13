@@ -610,3 +610,165 @@ article.panel:hover {
   .cta-banner { padding: 1.5rem; }
   .footer-shell { flex-direction: column; align-items: flex-start; }
 }
+
+/* ─── TYPED WORD GLOW ────────────────────────────────── */
+#typed-word {
+  display: block;
+  min-height: 1.25em;
+  text-shadow: 0 0 22px rgba(0, 229, 255, .55), 0 0 44px rgba(0, 229, 255, .22);
+}
+
+/* ─── TECH TICKER ────────────────────────────────────── */
+.tech-ticker-section {
+  overflow: hidden;
+  padding: .9rem 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(0, 153, 255, .025);
+  position: relative;
+  z-index: 1;
+}
+.tech-ticker-section::before,
+.tech-ticker-section::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.tech-ticker-section::before { left: 0;  background: linear-gradient(to right,  var(--bg), transparent); }
+.tech-ticker-section::after  { right: 0; background: linear-gradient(to left,   var(--bg), transparent); }
+.ticker-track {
+  display: inline-flex;
+  animation: tickerScroll 45s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: 0 2rem;
+  font-size: .82rem;
+  font-family: 'Fira Code', monospace;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: .02em;
+}
+.ticker-item .tk-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .6;
+  flex-shrink: 0;
+}
+.ticker-item:hover { color: var(--accent-2); }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── LIVE EVENTS FEED ───────────────────────────────── */
+.live-feed-section {
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.live-feed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.feed-header {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: 1.2rem;
+}
+.feed-live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, .6);
+  animation: livePulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(34, 197, 94, .4); }
+  50%       { box-shadow: 0 0 14px rgba(34, 197, 94, .9); }
+}
+.feed-box {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  padding: 1.2rem;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+.feed-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50px;
+  background: linear-gradient(to top, rgba(2, 11, 24, .95), transparent);
+  pointer-events: none;
+}
+#event-log {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-family: 'Fira Code', monospace;
+  font-size: .78rem;
+}
+.ev-line {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: .25rem .4rem;
+  border-radius: 5px;
+  animation: evFadeIn .4s ease-out;
+  line-height: 1.45;
+}
+.ev-line:hover { background: rgba(255,255,255,.03); }
+@keyframes evFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.ev-time  { color: #555e6e; flex-shrink: 0; }
+.ev-ok    { color: #22c55e; }
+.ev-warn  { color: #f59e0b; }
+.ev-info  { color: var(--accent-2); }
+.ev-msg   { color: var(--muted); }
+
+/* throughput bars */
+.throughput-panel { display: flex; flex-direction: column; gap: 1rem; }
+.tp-row label {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  color: var(--muted);
+  margin-bottom: .35rem;
+  font-family: 'Fira Code', monospace;
+}
+.tp-row label span { color: var(--text); font-weight: 600; }
+.tp-bar-bg {
+  height: 6px;
+  background: rgba(255,255,255,.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tp-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .9s cubic-bezier(.4,0,.2,1);
+}
+.tp-bar-fill.blue  { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.tp-bar-fill.green { background: linear-gradient(90deg, #22c55e, #86efac); }
+.tp-bar-fill.purple{ background: linear-gradient(90deg, var(--accent-3), #c084fc); }
+.tp-bar-fill.cyan  { background: linear-gradient(90deg, #06b6d4, var(--accent-2)); }
+@media (max-width: 780px) {
+  .live-feed-grid { grid-template-columns: 1fr; }
+  .feed-box { height: 200px; }
+}

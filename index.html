@@ -33,7 +33,7 @@
             <span class="eyebrow" style="margin:0">Enterprise Integration Engineering</span>
             <span class="badge">🟢 Available Q3 2026</span>
           </div>
-          <h1>We build systems where <span id="typed-word" style="color:var(--accent-2)"></span></h1>
+          <h1>We build systems where<br><span id="typed-word" style="color:var(--accent-2)"></span></h1>
           <p class="lead">
             IntegraTech designs and delivers enterprise integration platforms for financial 
             institutions and industrial enterprises — from SWIFT pipelines to real-time 
@@ -80,9 +80,9 @@
                 <div class="term-line"><span class="t-ok">✓ МосБиржа WebSocket feed       <span class="t-tag">[running]</span></span></div>
                 <div class="term-line"><span class="t-ok">✓ НРД settlement sync           <span class="t-tag">[running]</span></span></div>
                 <div class="term-line"><span class="t-dim">─────────────────────────────────</span></div>
-                <div class="term-line"><span class="t-ok">✓ throughput:  <span class="t-cmd">48 200 msg/sec</span></span></div>
-                <div class="term-line"><span class="t-ok">✓ latency p99: <span class="t-cmd">3.2 ms</span></span></div>
-                <div class="term-line"><span class="t-ok">✓ uptime:      <span class="t-cmd">99.97 %</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ throughput:  <span class="t-cmd" id="t-throughput">48 200</span> <span class="t-dim">msg/sec</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ latency p99: <span class="t-cmd" id="t-latency">3.2</span> <span class="t-dim">ms</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ uptime:      <span class="t-cmd" id="t-uptime-val">99.97</span> <span class="t-dim">%</span></span></div>
                 <div class="term-line">&nbsp;</div>
                 <div class="term-line"><span class="t-prompt">$</span> <span class="t-cmd">kubectl get pods -n integrations</span></div>
                 <div class="term-line"><span class="t-dim">NAME                    READY   STATUS</span></div>
@@ -238,6 +238,60 @@
       </div>
     </section>
 
+    <!-- ── TECH TICKER ──────────────────────────────────── -->
+    <div class="tech-ticker-section">
+      <div class="ticker-track" aria-hidden="true">
+      <span class="ticker-item"><span class="tk-dot"></span>Apache NiFi</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Apache Kafka</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Java 21</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Spring Boot 3</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Kubernetes</span>
+      <span class="ticker-item"><span class="tk-dot"></span>PostgreSQL</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Greenplum</span>
+      <span class="ticker-item"><span class="tk-dot"></span>OpenBao</span>
+      <span class="ticker-item"><span class="tk-dot"></span>SWIFT MT/MX</span>
+      <span class="ticker-item"><span class="tk-dot"></span>WebFlux</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Debezium</span>
+      <span class="ticker-item"><span class="tk-dot"></span>GitLab CI</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Headscale</span>
+      <span class="ticker-item"><span class="tk-dot"></span>OAuth2 · mTLS</span>
+      <span class="ticker-item"><span class="tk-dot"></span>gRPC · REST</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Docker</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Prometheus</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Grafana</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Vault</span>
+      <span class="ticker-item"><span class="tk-dot"></span>FIX Protocol</span>
+      <span class="ticker-item"><span class="tk-dot"></span>GitHub Actions</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Groovy</span>
+      <span class="ticker-item"><span class="tk-dot"></span>НРД API</span>
+      <span class="ticker-item"><span class="tk-dot"></span>МосБиржа WS</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Apache NiFi</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Apache Kafka</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Java 21</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Spring Boot 3</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Kubernetes</span>
+      <span class="ticker-item"><span class="tk-dot"></span>PostgreSQL</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Greenplum</span>
+      <span class="ticker-item"><span class="tk-dot"></span>OpenBao</span>
+      <span class="ticker-item"><span class="tk-dot"></span>SWIFT MT/MX</span>
+      <span class="ticker-item"><span class="tk-dot"></span>WebFlux</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Debezium</span>
+      <span class="ticker-item"><span class="tk-dot"></span>GitLab CI</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Headscale</span>
+      <span class="ticker-item"><span class="tk-dot"></span>OAuth2 · mTLS</span>
+      <span class="ticker-item"><span class="tk-dot"></span>gRPC · REST</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Docker</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Prometheus</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Grafana</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Vault</span>
+      <span class="ticker-item"><span class="tk-dot"></span>FIX Protocol</span>
+      <span class="ticker-item"><span class="tk-dot"></span>GitHub Actions</span>
+      <span class="ticker-item"><span class="tk-dot"></span>Groovy</span>
+      <span class="ticker-item"><span class="tk-dot"></span>НРД API</span>
+      <span class="ticker-item"><span class="tk-dot"></span>МосБиржа WS</span>
+      </div>
+    </div>
+
     <!-- ── CTA ──────────────────────────────────────── -->
     <section class="section" style="padding-top:0">
       <div class="container">
@@ -253,6 +307,62 @@
           <div style="display:flex;flex-direction:column;gap:.8rem;flex-shrink:0">
             <a class="button primary" href="contact.html">Get in touch</a>
             <a class="button secondary" href="case-studies.html">See our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LIVE FEED ────────────────────────────────────── -->
+    <section class="live-feed-section">
+      <div class="container">
+        <div class="section-heading" style="margin-bottom:2.5rem">
+          <span class="eyebrow">System activity</span>
+          <h2 style="margin-bottom:.4rem">Production pipelines. Right now.</h2>
+          <p class="lead" style="margin-top:.5rem;max-width:56ch">
+            Real-time integration means real consequences. These are the kind of systems we keep running 24/7.
+          </p>
+        </div>
+        <div class="live-feed-grid">
+          <!-- Event log -->
+          <div>
+            <div class="feed-header">
+              <div class="feed-live-dot"></div>
+              <span style="font-size:.82rem;font-family:'Fira Code',monospace;color:var(--muted)">LIVE · integration-events.log</span>
+            </div>
+            <div class="feed-box">
+              <div id="event-log"></div>
+            </div>
+          </div>
+          <!-- Throughput bars -->
+          <div>
+            <div class="feed-header">
+              <div class="feed-live-dot" style="background:#0099ff;box-shadow:0 0 8px rgba(0,153,255,.6)"></div>
+              <span style="font-size:.82rem;font-family:'Fira Code',monospace;color:var(--muted)">LIVE · pipeline-metrics.json</span>
+            </div>
+            <div class="feed-box">
+              <div class="throughput-panel" style="padding:.4rem .2rem">
+                <div class="tp-row">
+                  <label>NiFi throughput <span id="tp-nifi">48 200 msg/s</span></label>
+                  <div class="tp-bar-bg"><div class="tp-bar-fill blue" id="bar-nifi" style="width:78%"></div></div>
+                </div>
+                <div class="tp-row">
+                  <label>Kafka consumer lag <span id="tp-kafka">1 204 msgs</span></label>
+                  <div class="tp-bar-bg"><div class="tp-bar-fill purple" id="bar-kafka" style="width:12%"></div></div>
+                </div>
+                <div class="tp-row">
+                  <label>SWIFT gateway p99 <span id="tp-swift">3.2 ms</span></label>
+                  <div class="tp-bar-bg"><div class="tp-bar-fill green" id="bar-swift" style="width:4%"></div></div>
+                </div>
+                <div class="tp-row">
+                  <label>API gateway RPS <span id="tp-api">2 847 rps</span></label>
+                  <div class="tp-bar-bg"><div class="tp-bar-fill cyan" id="bar-api" style="width:57%"></div></div>
+                </div>
+                <div class="tp-row">
+                  <label>CDC event rate <span id="tp-cdc">9 310 rows/s</span></label>
+                  <div class="tp-bar-bg"><div class="tp-bar-fill blue" id="bar-cdc" style="width:34%"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -360,6 +470,96 @@
         if (el) observer.observe(el);
       });
     }
+
+    // ── Terminal live number fluctuation
+    (function() {
+      function rnd(min, max, dec) {
+        var v = min + Math.random() * (max - min);
+        return dec ? v.toFixed(dec) : Math.round(v);
+      }
+      function fmt(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+      function flickerTerminal() {
+        var th = document.getElementById('t-throughput');
+        var la = document.getElementById('t-latency');
+        if (th) th.textContent = fmt(rnd(44000, 54000));
+        if (la) la.textContent = rnd(2.4, 4.8, 1);
+      }
+      setInterval(flickerTerminal, 2600);
+    }());
+
+    // ── Live event feed
+    (function() {
+      var logEl = document.getElementById('event-log');
+      if (!logEl) return;
+      var events = [
+        { cls:'ev-ok',   msg:'MT103 #TXN-88421 → NiFi → Kafka · settled' },
+        { cls:'ev-info', msg:'CDC: 1 204 rows committed · greenplum sync' },
+        { cls:'ev-ok',   msg:'kubectl rollout · swift-gateway-7f9 ready' },
+        { cls:'ev-info', msg:'МосБиржа WS heartbeat · latency 1.8ms' },
+        { cls:'ev-ok',   msg:'OAuth2 token refreshed · api-gateway-6c4' },
+        { cls:'ev-warn', msg:'Kafka lag spike +340 msgs · auto-rebalance' },
+        { cls:'ev-ok',   msg:'NiFi FlowFile 482k · throughput nominal' },
+        { cls:'ev-info', msg:'НРД settlement ack · batch #7741 confirmed' },
+        { cls:'ev-ok',   msg:'Debezium WAL offset 0x3A8F · checkpoint OK' },
+        { cls:'ev-ok',   msg:'WebSocket feed reconnected · МосБиржа FORTS' },
+        { cls:'ev-info', msg:'OpenBao lease renewed · integratech/runtime' },
+        { cls:'ev-ok',   msg:'mTLS handshake OK · api-gateway → core-bank' },
+        { cls:'ev-warn', msg:'p99 latency 6.1ms · auto-throttle activated' },
+        { cls:'ev-ok',   msg:'Kafka consumer group rebalanced · 4 members' },
+        { cls:'ev-info', msg:'SWIFT MT950 received · reconciliation started' },
+        { cls:'ev-ok',   msg:'CDC snapshot done · 9.3k rows/s ingested' },
+        { cls:'ev-info', msg:'GitOps sync · main → k8s/integrations · OK' },
+        { cls:'ev-ok',   msg:'Prometheus alert resolved · pipeline healthy' },
+      ];
+      var idx = 0;
+      var MAX_LINES = 20;
+      function now() {
+        var d = new Date();
+        return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2);
+      }
+      function addLine() {
+        var ev = events[idx % events.length];
+        idx++;
+        var line = document.createElement('div');
+        line.className = 'ev-line';
+        line.innerHTML = '<span class="ev-time">'+now()+'</span>'
+          + '<span class="'+ev.cls+'">●</span>'
+          + '<span class="ev-msg">'+ev.msg+'</span>';
+        logEl.appendChild(line);
+        while (logEl.children.length > MAX_LINES) logEl.removeChild(logEl.firstChild);
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+      // seed initial lines
+      for (var i = 0; i < 6; i++) addLine();
+      setInterval(addLine, 2200);
+    }());
+
+    // ── Live throughput bars fluctuation
+    (function() {
+      function rnd(min, max) { return min + Math.random() * (max - min); }
+      function fmt(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+      function setBar(barId, labelId, pct, label) {
+        var bar = document.getElementById(barId);
+        var lbl = document.getElementById(labelId);
+        if (bar) bar.style.width = pct.toFixed(0) + '%';
+        if (lbl) lbl.textContent = label;
+      }
+      function tickBars() {
+        var nifiPct = rnd(68, 92);
+        setBar('bar-nifi',  'tp-nifi',  nifiPct,       fmt(nifiPct * 680) + ' msg/s');
+        var kafkaPct = rnd(5, 28);
+        setBar('bar-kafka', 'tp-kafka', kafkaPct,       fmt(kafkaPct * 120) + ' msgs');
+        var swiftMs = rnd(2.1, 5.8);
+        setBar('bar-swift', 'tp-swift', Math.min(swiftMs * 8, 50), swiftMs.toFixed(1) + ' ms');
+        var apiPct = rnd(38, 75);
+        setBar('bar-api',   'tp-api',   apiPct,         fmt(apiPct * 52) + ' rps');
+        var cdcPct = rnd(22, 55);
+        setBar('bar-cdc',   'tp-cdc',   cdcPct,         fmt(cdcPct * 185) + ' rows/s');
+      }
+      tickBars();
+      setInterval(tickBars, 3000);
+    }());
+
   }());
   </script>
 </body>
