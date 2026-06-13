@@ -900,24 +900,26 @@
   };
 
   /* ── APPLY TRANSLATIONS ───────────────────────────────── */
-  function applyLang(lang) {
+  function applyLang(lang, isUserAction) {
     var t = I18N[lang] || I18N.en;
+    var prevLang = currentLang;
     currentLang = lang;
 
-    // Text content
+    // Text content — safe: only update elements whose key resolves to a string
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      var val = t[key];
+      if (typeof val === 'string') el.textContent = val;
     });
 
-    // HTML content (for elements with inner markup)
+    // HTML content
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-html');
-      if (t[key] !== undefined) el.innerHTML = t[key];
+      if (typeof t[key] === 'string') el.innerHTML = t[key];
     });
 
     // Page title
-    var titleKey = 'page.' + document.body.getAttribute('data-page') + '.title';
+    var titleKey = 'page.' + (document.body.getAttribute('data-page') || '') + '.title';
     if (t[titleKey]) document.title = t[titleKey];
 
     // html lang attr
@@ -934,9 +936,14 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 
-    // Re-init Typed.js if available (index page only)
-    if (t['typed.strings'] && typeof window.__reinitTyped === 'function') {
+    // Re-init Typed.js ONLY when user explicitly switches language (not on initial load)
+    if (isUserAction && t['typed.strings'] && typeof window.__reinitTyped === 'function') {
       window.__reinitTyped(t['typed.strings']);
+    }
+
+    // Refresh AOS after DOM changes so hidden elements get recalculated
+    if (typeof window.AOS !== 'undefined' && typeof window.AOS.refresh === 'function') {
+      window.AOS.refresh();
     }
 
     localStorage.setItem('it_lang', lang);
@@ -962,7 +969,7 @@
 
     document.querySelectorAll('.lang-option').forEach(function (opt) {
       opt.addEventListener('click', function () {
-        applyLang(opt.getAttribute('data-lang'));
+        applyLang(opt.getAttribute('data-lang'), true);
         dropdown.setAttribute('hidden', '');
         btn.setAttribute('aria-expanded', 'false');
       });
@@ -988,7 +995,13 @@
 
   function init() {
     initSwitcher();
-    applyLang(detectLang());
+    var lang = detectLang();
+    // Small delay: let inline animation scripts (AOS, Vanta, Typed) finish init first
+    if (document.readyState === 'complete') {
+      setTimeout(function() { applyLang(lang); }, 50);
+    } else {
+      applyLang(lang);
+    }
   }
 
   if (document.readyState === 'loading') {

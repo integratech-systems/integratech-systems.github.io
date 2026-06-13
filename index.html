@@ -417,8 +417,12 @@
   <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
   <script>
   (function () {
-    // ── AOS — scroll reveal on all cards
-    AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });
+    // ── AOS — scroll reveal on all cards (with fallback if CDN unavailable)
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });
+    } else {
+      document.querySelectorAll('[data-aos]').forEach(function(el) { el.removeAttribute('data-aos'); });
+    }
 
     // ── Vanta.js NET — animated mesh network background on hero
     if (typeof VANTA !== 'undefined' && VANTA.NET) {
