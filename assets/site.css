@@ -626,6 +626,114 @@ article.panel:hover {
   text-shadow: 0 0 22px rgba(0, 229, 255, .55), 0 0 44px rgba(0, 229, 255, .22);
 }
 
+/* ── MANIFESTO ──────────────────────────────────────── */
+.manifesto-section {
+  background: linear-gradient(135deg,
+    rgba(0,119,204,.08) 0%,
+    rgba(0,200,150,.05) 50%,
+    rgba(0,119,204,.06) 100%);
+  border-top: 1px solid rgba(0,119,204,.18);
+  border-bottom: 1px solid rgba(0,119,204,.12);
+  position: relative;
+  overflow: hidden;
+}
+.manifesto-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(0,200,150,.06), transparent);
+  pointer-events: none;
+}
+.manifesto-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.manifesto-text .eyebrow { margin-bottom: .6rem; }
+.manifesto-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.25;
+  margin-bottom: 1.1rem;
+}
+.manifesto-text .lead {
+  font-size: .97rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+.manifesto-quote {
+  border-left: 3px solid var(--accent);
+  padding: .8rem 1.2rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(0,119,204,.07);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.5;
+}
+.manifesto-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.mstat-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  text-align: center;
+  transition: border-color .2s, transform .2s;
+}
+.mstat-card:hover {
+  border-color: rgba(0,119,204,.4);
+  transform: translateY(-2px);
+}
+.mstat-num {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), #00c896);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.mstat-label {
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--fg);
+  margin-top: .15rem;
+}
+.mstat-sub {
+  font-size: .75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+@media (max-width: 900px) {
+  .manifesto-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+[data-theme="light"] .manifesto-section {
+  background: linear-gradient(135deg,
+    rgba(0,119,204,.05) 0%,
+    rgba(0,180,130,.04) 50%,
+    rgba(0,119,204,.04) 100%);
+  border-color: rgba(0,119,204,.2);
+}
+[data-theme="light"] .mstat-card {
+  background: rgba(255,255,255,.7);
+  border-color: rgba(0,119,204,.15);
+}
+[data-theme="light"] .manifesto-quote {
+  background: rgba(0,119,204,.06);
+}
+
 /* ─── TECH TICKER ────────────────────────────────────── */
 .tech-ticker-section {
   overflow: hidden;

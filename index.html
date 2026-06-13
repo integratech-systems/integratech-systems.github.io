@@ -270,8 +270,45 @@
       </div>
     </section>
 
-    <!-- ── TECH TICKER ──────────────────────────────────── -->
-    <div class="tech-ticker-section">
+    <!-- ── MANIFESTO ─────────────────────────────────────── -->
+    <section class="section manifesto-section">
+      <div class="container">
+        <div class="manifesto-inner">
+          <div class="manifesto-text" data-aos="fade-right">
+            <span class="eyebrow" data-i18n="manifesto.eyebrow">The engineer's advantage</span>
+            <h2 data-i18n="manifesto.h2">Technology made the individual engineer extraordinary.</h2>
+            <p class="lead" data-i18n="manifesto.lead">A senior engineer today commands tools that once required entire departments. Cloud-native infrastructure, AI-augmented development, and a decade of production battle scars compress what used to take a team of ten into what one focused engineer can own end-to-end.</p>
+            <blockquote class="manifesto-quote" data-i18n="manifesto.quote">
+              We didn't grow a team — we grew with the tools.
+            </blockquote>
+          </div>
+          <div class="manifesto-stats" data-aos="fade-left">
+            <div class="mstat-card">
+              <span class="mstat-num" data-i18n="manifesto.stat1.num">1</span>
+              <span class="mstat-label" data-i18n="manifesto.stat1.label">engineer</span>
+              <span class="mstat-sub" data-i18n="manifesto.stat1.sub">what once needed 6+</span>
+            </div>
+            <div class="mstat-card">
+              <span class="mstat-num counter" data-target="220" data-suffix="+" data-i18n="manifesto.stat2.num">220+</span>
+              <span class="mstat-label" data-i18n="manifesto.stat2.label">days uptime</span>
+              <span class="mstat-sub" data-i18n="manifesto.stat2.sub">no SRE team required</span>
+            </div>
+            <div class="mstat-card">
+              <span class="mstat-num" data-i18n="manifesto.stat3.num">50k+</span>
+              <span class="mstat-label" data-i18n="manifesto.stat3.label">msg / sec</span>
+              <span class="mstat-sub" data-i18n="manifesto.stat3.sub">single NiFi pipeline</span>
+            </div>
+            <div class="mstat-card">
+              <span class="mstat-num counter" data-target="5" data-suffix="" data-i18n="manifesto.stat4.num">5</span>
+              <span class="mstat-label" data-i18n="manifesto.stat4.label">microservices</span>
+              <span class="mstat-sub" data-i18n="manifesto.stat4.sub">owned by one person</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECH TICKER ──────────────────────────────────── -->    <div class="tech-ticker-section">
       <div class="ticker-track" aria-hidden="true">
       <span class="ticker-item"><span class="tk-dot"></span>Apache NiFi</span>
       <span class="ticker-item"><span class="tk-dot"></span>Apache Kafka</span>
@@ -651,5 +688,36 @@
   }());
   </script>
   <!-- End Tracker -->
+
+  <!-- Manifesto counters -->
+  <script>
+  (function(){
+    var counters = document.querySelectorAll('.mstat-num.counter');
+    if(!counters.length) return;
+    var done = false;
+    var observer = new IntersectionObserver(function(entries){
+      if(done) return;
+      var visible = entries.some(function(e){ return e.isIntersecting; });
+      if(!visible) return;
+      done = true;
+      counters.forEach(function(el){
+        var target = parseInt(el.dataset.target, 10);
+        var suffix = el.dataset.suffix || '';
+        var start = 0;
+        var duration = 1400;
+        var startTime = null;
+        function step(ts){
+          if(!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(start + (target - start) * ease) + suffix;
+          if(progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.3 });
+    if(counters[0]) observer.observe(counters[0]);
+  })();
+  </script>
 </body>
 </html>
