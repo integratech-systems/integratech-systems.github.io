@@ -621,8 +621,8 @@ article.panel:hover {
 /* ─── TYPED WORD GLOW ────────────────────────────────── */
 #typed-word {
   display: block;
-  height: 2.7em;          /* fixed: reserves space for 2 lines, prevents layout shift */
-  overflow: hidden;
+  min-height: 2.7em;      /* reserves baseline 2-line height; expands for longer strings */
+  overflow: visible;      /* allow 3+ lines (e.g. Russian) without clipping */
   text-shadow: 0 0 22px rgba(0, 229, 255, .55), 0 0 44px rgba(0, 229, 255, .22);
 }
 
