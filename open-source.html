@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>(function(){var t=localStorage.getItem('it_theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tech Stack — IntegraTech Systems</title>
   <meta name="description" content="IntegraTech technology stack: Apache NiFi, Kafka, Java 21, Spring Boot, Kubernetes, OpenBao, headscale and more.">
@@ -10,6 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="alternate" hreflang="en" href="https://integratech-systems.github.io/open-source.html">
+  <link rel="alternate" hreflang="ru" href="https://integratech-systems.github.io/open-source.html?lang=ru">
+  <link rel="alternate" hreflang="kk" href="https://integratech-systems.github.io/open-source.html?lang=kz">
+  <link rel="alternate" hreflang="de" href="https://integratech-systems.github.io/open-source.html?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://integratech-systems.github.io/open-source.html?lang=fr">
+  <link rel="alternate" hreflang="x-default" href="https://integratech-systems.github.io/open-source.html">
 </head>
 <body data-page="stack">
   <header class="site-header">
@@ -21,6 +28,10 @@
         <a href="open-source.html" class="active" data-i18n="nav.tech_stack">Tech Stack</a>
         <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1"  x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
   <div class="lang-switcher">
     <button class="lang-btn" id="lang-btn" aria-expanded="false" aria-haspopup="true">
       <span id="lang-flag">🇬🇧</span>
@@ -233,6 +244,7 @@
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
+  <script src="assets/theme.js"></script>
   <script src="assets/i18n.js"></script>
 
   <!-- IntegraTech Visitor Tracker — pixel + heartbeat -->
