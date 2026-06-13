@@ -11,24 +11,36 @@
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
-<body>
+<body data-page="services">
   <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="index.html">IntegraTech</a>
       <nav class="site-nav">
-        <a href="services.html" class="active">Services</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="open-source.html">Tech Stack</a>
-        <a href="contact.html">Contact</a>
+        <a href="services.html" class="active" data-i18n="nav.services">Services</a>
+        <a href="case-studies.html" data-i18n="nav.case_studies">Case Studies</a>
+        <a href="open-source.html" data-i18n="nav.tech_stack">Tech Stack</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
+  <div class="lang-switcher">
+    <button class="lang-btn" id="lang-btn" aria-expanded="false" aria-haspopup="true">
+      <span id="lang-flag">🇬🇧</span>
+      <span id="lang-code">EN</span>
+      <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lang-dropdown" id="lang-dropdown" hidden>
+      <button class="lang-option active" data-lang="en">🇬🇧 English</button>
+      <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+      <button class="lang-option" data-lang="kz">🇰🇿 Қазақша</button>
+    </div>
+  </div>
     </div>
   </header>
 
   <main>
     <section class="page-intro">
       <div class="container">
-        <span class="eyebrow">What we offer</span>
-        <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none">Services</h1>
+        <span class="eyebrow" data-i18n="page.services.eyebrow">What we offer</span>
+        <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none" data-i18n="page.services.h1">Services</h1>
         <p class="lead">
           We deliver end-to-end integration engineering — from architecture consulting to 
           production-grade system implementation and long-term support.
@@ -44,8 +56,8 @@
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon blue" style="margin-bottom:1.2rem">🔄</div>
-            <span class="eyebrow" style="margin-bottom:.5rem">Core service</span>
-            <h3>Data Pipeline Engineering</h3>
+            <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.pipeline.badge">Core service</span>
+            <h3 data-i18n="svc.pipeline.title">Data Pipeline Engineering</h3>
             <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
               Design and implementation of enterprise data pipelines using Apache NiFi and Apache Kafka.
               We handle high-throughput scenarios (50k+ msg/sec), exactly-once delivery, CDC from 
@@ -63,8 +75,8 @@
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan" style="margin-bottom:1.2rem">🏦</div>
-            <span class="eyebrow" style="margin-bottom:.5rem">Fintech speciality</span>
-            <h3>Financial System Integration</h3>
+            <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.fintech.badge">Fintech speciality</span>
+            <h3 data-i18n="svc.fintech.title">Financial System Integration</h3>
             <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
               We've built production connectors and adapters for the most demanding financial 
               infrastructure in Russia and the CIS. SWIFT, НРД, МосБиржа — we know these 
@@ -82,8 +94,8 @@
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon purple" style="margin-bottom:1.2rem">⚡</div>
-            <span class="eyebrow" style="margin-bottom:.5rem">Application layer</span>
-            <h3>Java Microservices &amp; API Design</h3>
+            <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.java.badge">Application layer</span>
+            <h3 data-i18n="svc.java.title">Java Microservices &amp; API Design</h3>
             <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
               Modern Java 17/21 backend engineering with Spring Boot 3, WebFlux reactive stack, 
               and virtual threads. We design API gateways with zero-trust security and 
@@ -101,8 +113,8 @@
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon green" style="margin-bottom:1.2rem">🛡️</div>
-            <span class="eyebrow" style="margin-bottom:.5rem">Infrastructure</span>
-            <h3>DevSecOps &amp; Kubernetes</h3>
+            <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.devops.badge">Infrastructure</span>
+            <h3 data-i18n="svc.devops.title">DevSecOps &amp; Kubernetes</h3>
             <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
               We build and operate Kubernetes-based infrastructure with GitOps workflows, 
               secrets management, and security posture that satisfies financial regulators. 
@@ -120,8 +132,8 @@
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon blue" style="margin-bottom:1.2rem">🌐</div>
-            <span class="eyebrow" style="margin-bottom:.5rem">Independence</span>
-            <h3>Private Corporate Infrastructure</h3>
+            <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.network.badge">Independence</span>
+            <h3 data-i18n="svc.network.title">Private Corporate Infrastructure</h3>
             <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
               Self-hosted corporate infrastructure that doesn't depend on Big Tech clouds. 
               Mesh VPN networks for secure remote teams, private XMPP messaging servers, 
@@ -139,8 +151,8 @@
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan" style="margin-bottom:1.2rem">🔎</div>
-            <span class="eyebrow" style="margin-bottom:.5rem">Advisory</span>
-            <h3>Architecture Consulting</h3>
+            <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.advisory.badge">Advisory</span>
+            <h3 data-i18n="svc.advisory.title">Architecture Consulting</h3>
             <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
               Not ready to outsource implementation? We provide expert architecture reviews, 
               integration audits, and technical strategy — so your team builds the right 
@@ -181,13 +193,13 @@
     <div class="container footer-shell">
       <div class="footer-brand">
         <strong>IntegraTech Systems</strong>
-        <p>Enterprise integration engineering · fintech · industrial</p>
+        <p data-i18n="footer.tagline">Enterprise integration engineering · fintech · industrial</p>
       </div>
       <nav class="footer-links">
-        <a href="services.html">Services</a>
+        <a href="services.html" data-i18n="footer.services">Services</a>
         <a href="case-studies.html">Case Studies</a>
-        <a href="open-source.html">Tech Stack</a>
-        <a href="contact.html">Contact</a>
+        <a href="open-source.html" data-i18n="footer.tech_stack">Tech Stack</a>
+        <a href="contact.html" data-i18n="footer.contact">Contact</a>
       </nav>
       <div class="footer-social">
         <a href="mailto:integratech-systems@outlook.com" class="social-icon" title="Email us" aria-label="Email">
@@ -204,5 +216,6 @@
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
+  <script src="assets/i18n.js"></script>
 </body>
 </html>
