@@ -61,7 +61,7 @@
       <div class="container">
         <span class="eyebrow" data-i18n="page.stack.eyebrow">Our toolbox</span>
         <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none" data-i18n="page.stack.h1">Technology Stack</h1>
-        <p class="lead">
+        <p class="lead" data-i18n="page.stack.lead">
           We choose technology based on production track record and operational simplicity.
           Here's what we actually use — and why.
         </p>
@@ -77,7 +77,7 @@
         <div>
           <span class="eyebrow" data-i18n="stack.section.data.eyebrow">Data &amp; Integration</span>
           <h2 data-i18n="stack.section.data.h2" style="font-size:1.8rem;margin-bottom:.8rem">The integration layer</h2>
-          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem" data-i18n="stack.section.data.desc">
             Apache NiFi is our primary tool for data movement and transformation. It provides
             visual flow design, built-in provenance (data lineage), back-pressure handling,
             and 300+ built-in processors. Kafka is the durable backbone where reliability 
@@ -99,7 +99,7 @@
         <div>
           <span class="eyebrow" data-i18n="stack.section.app.eyebrow">Application layer</span>
           <h2 data-i18n="stack.section.app.h2" style="font-size:1.8rem;margin-bottom:.8rem">Java ecosystem</h2>
-          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem" data-i18n="stack.section.app.desc">
             Java 21 with virtual threads eliminates the need for reactive plumbing in most 
             cases while keeping throughput high. Spring Boot 3 with Spring Security, WebFlux 
             for truly async workloads, and Groovy for scripting inside NiFi processors.
@@ -120,7 +120,7 @@
         <div>
           <span class="eyebrow" data-i18n="stack.section.infra.eyebrow">Infrastructure &amp; DevOps</span>
           <h2 data-i18n="stack.section.infra.h2" style="font-size:1.8rem;margin-bottom:.8rem">Cloud-native operations</h2>
-          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem" data-i18n="stack.section.infra.desc">
             Kubernetes for orchestration, GitLab CI / GitHub Actions for delivery, Helm for
             packaging. We instrument everything with Prometheus + Grafana and wire alerts to 
             PagerDuty or Telegram for on-call. Deployments are GitOps — config lives in Git,
@@ -142,7 +142,7 @@
         <div>
           <span class="eyebrow" data-i18n="stack.section.security.eyebrow">Security</span>
           <h2 data-i18n="stack.section.security.h2" style="font-size:1.8rem;margin-bottom:.8rem">Zero-trust by default</h2>
-          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem" data-i18n="stack.section.security.desc">
             OpenBao (an open-source HashiCorp Vault fork) manages all secrets — no credentials 
             in environment variables, no plaintext configs. mTLS between services, OAuth2/JWT 
             at API boundaries, and network-level segmentation with headscale ACL policies.
@@ -163,7 +163,7 @@
         <div>
           <span class="eyebrow" data-i18n="stack.section.fintech.eyebrow">Financial protocols</span>
           <h2 data-i18n="stack.section.fintech.h2" style="font-size:1.8rem;margin-bottom:.8rem">Fintech-specific expertise</h2>
-          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem">
+          <p style="color:var(--muted);line-height:1.75;max-width:68ch;font-size:.95rem;margin-bottom:2rem" data-i18n="stack.section.fintech.desc">
             Most integration engineers don't know SWIFT from SEPA or FIX from FAST. We do. 
             This expertise is rare and took years of production work to accumulate. It's one 
             of the core reasons our clients in banking and trading choose us over generalist vendors.
@@ -182,36 +182,36 @@
 
         <!-- Philosophy box -->
         <div class="panel" style="padding:2.5rem" data-aos="fade-up">
-          <span class="eyebrow">Engineering philosophy</span>
-          <h2 style="font-size:1.8rem;margin-bottom:1.2rem">Why we don't chase trends</h2>
+          <span class="eyebrow" data-i18n="stack.philosophy.eyebrow">Engineering philosophy</span>
+          <h2 style="font-size:1.8rem;margin-bottom:1.2rem" data-i18n="stack.philosophy.h2">Why we don't chase trends</h2>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
             <div>
-              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We use NiFi even though people say "just use Kafka"</h3>
-              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem" data-i18n="stack.phil1.title">We use NiFi even though people say "just use Kafka"</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7" data-i18n="stack.phil1.desc">
                 Because NiFi gives you data provenance, back-pressure handling, visual debugging, 
                 and 300 built-in processors. For complex ETL with many heterogeneous sources, 
                 it's the right tool — and our NiFi production experience proves it.
               </p>
             </div>
             <div>
-              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We use Java 21 even though everyone says "go Rust"</h3>
-              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem" data-i18n="stack.phil2.title">We use Java 21 even though everyone says "go Rust"</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7" data-i18n="stack.phil2.desc">
                 Because the Spring ecosystem, JVM tooling, and Java talent pool are unmatched 
                 for enterprise integration. Virtual threads solved the concurrency problem. 
                 Rewriting in Rust helps no one's SLA.
               </p>
             </div>
             <div>
-              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We use OpenBao instead of commercial vaults</h3>
-              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem" data-i18n="stack.phil3.title">We use OpenBao instead of commercial vaults</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7" data-i18n="stack.phil3.desc">
                 Full control, no vendor lock-in, no licensing fees at scale. We self-host and 
                 operate OpenBao in production for our own infrastructure and clients — we know 
                 its failure modes and operational patterns.
               </p>
             </div>
             <div>
-              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem">We build self-hosted infrastructure by default</h3>
-              <p style="color:var(--muted);font-size:.92rem;line-height:1.7">
+              <h3 style="color:var(--accent-2);font-size:1rem;margin-bottom:.5rem" data-i18n="stack.phil4.title">We build self-hosted infrastructure by default</h3>
+              <p style="color:var(--muted);font-size:.92rem;line-height:1.7" data-i18n="stack.phil4.desc">
                 Headscale, Prosody, OpenBao — not because cloud is bad, but because for 
                 financial companies and regulated industries, data sovereignty and operational 
                 independence are a business requirement, not a preference.

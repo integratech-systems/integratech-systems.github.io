@@ -61,7 +61,7 @@
       <div class="container">
         <span class="eyebrow" data-i18n="page.cases.eyebrow">Real projects, real results</span>
         <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none" data-i18n="page.cases.h1">Case Studies</h1>
-        <p class="lead">
+        <p class="lead" data-i18n="page.cases.lead">
           All projects are anonymised. Metrics and timelines are real.
           We don't exaggerate — these are the actual results we delivered.
         </p>
@@ -81,27 +81,27 @@
             <span class="badge">3 weeks</span>
           </div>
           <h3 data-i18n="case1.title">SWIFT ETL Pipeline: From 3-Day Outages to 99.97% Uptime</h3>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="case1.p1">
             A top-20 Russian bank had a SWIFT MT103 processing pipeline built on a brittle 
             custom Java monolith. The system crashed under end-of-month load — every single month. 
             The team was spending 2–3 days per incident on manual recovery.
           </p>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem" data-i18n="case1.p2">
             We rebuilt the ingestion and transformation layer on Apache NiFi with Kafka as the 
             durable backbone. Dead-letter handling, idempotent processors, and automated replay 
             replaced the fragile manual procedures. Monitoring was wired to PagerDuty with 
             runbooks for every alert.
           </p>
-          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem" data-i18n-html="case1.list">
             <li>Replaced monolithic SWIFT processor with NiFi flow + Kafka topic per message type</li>
             <li>Implemented exactly-once semantics for financial message delivery</li>
             <li>Automated reconciliation against НРД settlement records</li>
             <li>Zero data loss during the first end-of-month cycle post-launch</li>
           </ul>
           <div class="case-result">
-            <div><strong>99.97%</strong><span>pipeline uptime</span></div>
-            <div><strong>3 days → 0</strong><span>manual recovery time</span></div>
-            <div><strong>3 weeks</strong><span>from audit to production</span></div>
+            <div><strong>99.97%</strong><span data-i18n="case1.r1">pipeline uptime</span></div>
+            <div><strong>3 days → 0</strong><span data-i18n="case1.r2">manual recovery time</span></div>
+            <div><strong>3 weeks</strong><span data-i18n="case1.r3">from audit to production</span></div>
           </div>
         </article>
 
@@ -113,28 +113,28 @@
             <span class="badge">6 weeks</span>
           </div>
           <h3 data-i18n="case2.title">МосБиржа Real-time Feed: 60% Latency Reduction on Market Data Pipeline</h3>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="case2.p1">
             A proprietary trading firm was receiving МосБиржа market data through a 
             third-party vendor feed. p99 latency was hitting 180ms during volatile sessions — 
             unacceptable for their algorithmic strategies. The vendor refused to SLA-guarantee 
             improvements.
           </p>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem" data-i18n="case2.p2">
             We built a direct WebSocket connection to МосБиржа FAST/FIXS feed, designed a 
             low-latency normalisation layer in Java 21 with virtual threads, and stored 
             tick data directly into partitioned PostgreSQL tables with BRIN indexes. 
             The p99 dropped from 180ms to 72ms on day one.
           </p>
-          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem" data-i18n-html="case2.list">
             <li>Direct FAST protocol decoder — no vendor intermediary</li>
             <li>Java 21 virtual threads handling 12 000 concurrent instrument subscriptions</li>
             <li>Partitioned PostgreSQL tick storage with sub-millisecond write latency</li>
             <li>Grafana dashboard for latency percentiles, gap detection, and reconnects</li>
           </ul>
           <div class="case-result">
-            <div><strong>60%</strong><span>latency reduction</span></div>
-            <div><strong>180ms → 72ms</strong><span>p99 market data latency</span></div>
-            <div><strong>12 000</strong><span>concurrent subscriptions</span></div>
+            <div><strong>60%</strong><span data-i18n="case2.r1">latency reduction</span></div>
+            <div><strong>180ms → 72ms</strong><span data-i18n="case2.r2">p99 market data latency</span></div>
+            <div><strong>12 000</strong><span data-i18n="case2.r3">concurrent subscriptions</span></div>
           </div>
         </article>
 
@@ -146,28 +146,28 @@
             <span class="badge">4 months</span>
           </div>
           <h3 data-i18n="case3.title">ДИТ Москвы: City-Scale Data Integration for 40+ Source Systems</h3>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="case3.p1">
             Moscow's Department of Information Technology needed a unified data integration 
             layer to consolidate operational data from 40+ municipal systems into a Greenplum 
             analytical platform. Existing ETL was a patchwork of scheduled SQL scripts with 
             no lineage, no monitoring, and daily failures.
           </p>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem" data-i18n="case3.p2">
             We designed and deployed an Apache NiFi cluster that handles the full ingestion 
             lifecycle — from REST and SOAP source APIs to schema validation, transformation, 
             error handling, and lineage tracking. Every pipeline self-documents its state 
             through structured logging and a custom Grafana dashboard.
           </p>
-          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem" data-i18n-html="case3.list">
             <li>NiFi cluster: 3-node HA with ZooKeeper, 40+ active flows</li>
             <li>Schema Registry for all source contracts — breaking changes caught before ingestion</li>
             <li>Full data lineage from source API to Greenplum analytical table</li>
             <li>On-call runbook and automated alerting handed to the internal team</li>
           </ul>
           <div class="case-result">
-            <div><strong>40+</strong><span>source systems</span></div>
-            <div><strong>Daily failures → 0</strong><span>pipeline errors/month</span></div>
-            <div><strong>4 months</strong><span>design to production</span></div>
+            <div><strong>40+</strong><span data-i18n="case3.r1">source systems</span></div>
+            <div><strong>Daily failures → 0</strong><span data-i18n="case3.r2">pipeline errors/month</span></div>
+            <div><strong>4 months</strong><span data-i18n="case3.r3">design to production</span></div>
           </div>
         </article>
 
@@ -179,28 +179,28 @@
             <span class="badge">2 weeks</span>
           </div>
           <h3 data-i18n="case4.title">Private Corporate Network: Zero Big-Tech Dependency for a 30-Person Team</h3>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="case4.p1">
             A fintech company with remote employees across Russia, Georgia, and Israel needed 
             a secure internal network that didn't route traffic through US-controlled cloud 
             providers. Existing WireGuard setup required manual key management and had no 
             access control policies.
           </p>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem" data-i18n="case4.p2">
             We deployed a self-hosted headscale controller with Tailscale clients, implemented 
             ACL policies for network segmentation, added an XMPP Prosody messaging server, 
             and integrated OpenBao for secrets rotation. Client onboarding was reduced to 
             scanning a QR code.
           </p>
-          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem" data-i18n-html="case4.list">
             <li>Headscale controller on private VPS, exit nodes in DE and US</li>
             <li>ACL policies: per-user access tiers, internet exit control</li>
             <li>Self-hosted Prosody XMPP with end-to-end encrypted group chats</li>
             <li>QR-code based onboarding page — client setup under 2 minutes</li>
           </ul>
           <div class="case-result">
-            <div><strong>30+</strong><span>team members connected</span></div>
-            <div><strong>2 min</strong><span>new client onboarding</span></div>
-            <div><strong>100%</strong><span>self-hosted, zero Big Tech</span></div>
+            <div><strong>30+</strong><span data-i18n="case4.r1">team members connected</span></div>
+            <div><strong>2 min</strong><span data-i18n="case4.r2">new client onboarding</span></div>
+            <div><strong>100%</strong><span data-i18n="case4.r3">self-hosted, zero Big Tech</span></div>
           </div>
         </article>
 
@@ -213,18 +213,18 @@
             <span class="badge">220+ days uptime</span>
           </div>
           <h3 data-i18n="case5.title">FluidTrader — Reactive Algorithmic Trading Platform (Fintech R&amp;D)</h3>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="case5.p1">
             Internal R&amp;D project — a production-grade reactive algorithmic trading system 
             built on Java 21 + Spring WebFlux. Connected to HTX (Huobi) spot &amp; futures markets. 
             The system runs 24/7 with 5 microservices, 12+ real-time SSE dashboards, and an 
             AI market analyst powered by Qwen3.7-Max and DeepSeek.
           </p>
-          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem">
+          <p style="color:var(--muted);line-height:1.75;font-size:.95rem;margin-top:.8rem" data-i18n="case5.p2">
             This project demonstrates our full-stack fintech engineering capability: non-blocking 
             reactive pipelines, TimescaleDB time-series storage, HMAC-SHA256 signed API auth, 
             sub-100ms order execution latency, and automated AI-driven hourly market briefs.
           </p>
-          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem">
+          <ul style="color:var(--muted);line-height:1.85;padding-left:1.1rem;margin-top:1rem;font-size:.94rem" data-i18n-html="case5.list">
             <li>5 microservices: fluid-trader, klines-service, prices-service, news-agent, trader-db</li>
             <li>AI analyst: Qwen3.7-Max + DeepSeek-V4-Pro, hourly market briefs via Telegram</li>
             <li>TimescaleDB for OHLCV time-series, WebSocket feed from HTX + Binance</li>
@@ -232,9 +232,9 @@
             <li>Full Kubernetes deployment on bare-metal VPS, Nginx TLS termination</li>
           </ul>
           <div class="case-result">
-            <div><strong>220+</strong><span>days continuous uptime</span></div>
-            <div><strong>12+</strong><span>live SSE dashboards</span></div>
-            <div><strong>&lt;100ms</strong><span>order execution latency</span></div>
+            <div><strong>220+</strong><span data-i18n="case5.r1">days continuous uptime</span></div>
+            <div><strong>12+</strong><span data-i18n="case5.r2">live SSE dashboards</span></div>
+            <div><strong>&lt;100ms</strong><span data-i18n="case5.r3">order execution latency</span></div>
           </div>
           <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
             <a href="https://fluid-trader.fun" target="_blank" rel="noopener"
@@ -242,7 +242,7 @@
               🚀 View Live System
             </a>
             <span style="color:var(--muted);font-size:.85rem;font-style:italic">
-              Access available for investors &amp; enterprise partners
+              <span data-i18n="case5.access">Access available for investors &amp; enterprise partners</span>
             </span>
           </div>
         </article>
@@ -254,8 +254,8 @@
       <div class="container">
         <div class="cta-banner">
           <div>
-            <span class="eyebrow">Have a similar challenge?</span>
-            <h2 style="margin:0">We'd love to hear about your project.</h2>
+            <span class="eyebrow" data-i18n="cases.cta.eyebrow">Have a similar challenge?</span>
+            <h2 style="margin:0" data-i18n="cases.cta.h2">We'd love to hear about your project.</h2>
             <p style="color:var(--muted);margin:.8rem 0 0;max-width:52ch">
               Describe your integration problem in a message — we'll respond within 24 hours 
               with an honest assessment and rough scope.

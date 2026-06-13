@@ -61,7 +61,7 @@
       <div class="container">
         <span class="eyebrow" data-i18n="page.services.eyebrow">What we offer</span>
         <h1 style="font-size:clamp(2.2rem,4vw,3.8rem);max-width:none" data-i18n="page.services.h1">Services</h1>
-        <p class="lead">
+        <p class="lead" data-i18n="page.services.lead">
           We deliver end-to-end integration engineering — from architecture consulting to 
           production-grade system implementation and long-term support.
         </p>
@@ -78,114 +78,114 @@
             <div class="card-icon blue" style="margin-bottom:1.2rem">🔄</div>
             <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.pipeline.badge">Core service</span>
             <h3 data-i18n="svc.pipeline.title">Data Pipeline Engineering</h3>
-            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="svc.pipeline.body">
               Design and implementation of enterprise data pipelines using Apache NiFi and Apache Kafka.
               We handle high-throughput scenarios (50k+ msg/sec), exactly-once delivery, CDC from 
               Oracle/PostgreSQL, and integration with analytical databases including Greenplum.
             </p>
-            <ul>
+            <ul data-i18n-html="svc.pipeline.list">
               <li>Apache NiFi flow design, cluster setup and tuning</li>
               <li>Kafka topic architecture, schema registry, stream processing</li>
               <li>Debezium CDC connectors for real-time database sync</li>
               <li>Greenplum / PostgreSQL analytical integration</li>
               <li>Dead-letter queues, replay, monitoring and alerting</li>
             </ul>
-            <p class="price">Engagement model: project-based or retainer · from €8 000 / project</p>
+            <p class="price" data-i18n="svc.pipeline.price">Engagement model: project-based or retainer · from €8 000 / project</p>
           </article>
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan" style="margin-bottom:1.2rem">🏦</div>
             <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.fintech.badge">Fintech speciality</span>
             <h3 data-i18n="svc.fintech.title">Financial System Integration</h3>
-            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="svc.fintech.body">
               We've built production connectors and adapters for the most demanding financial 
               infrastructure in Russia and the CIS. SWIFT, НРД, МосБиржа — we know these 
               protocols inside out and deliver integrations that don't fail silently.
             </p>
-            <ul>
+            <ul data-i18n-html="svc.fintech.list">
               <li>SWIFT MT103 / MT202 / MX ISO 20022 message processing</li>
               <li>НРД API integration — settlement, depository operations</li>
               <li>МосБиржа WebSocket and REST API connectors</li>
               <li>Banking core system adapters (custom protocols, legacy XML)</li>
               <li>FIX protocol implementation for trading systems</li>
             </ul>
-            <p class="price">Engagement model: fixed-scope contract · from €15 000</p>
+            <p class="price" data-i18n="svc.fintech.price">Engagement model: fixed-scope contract · from €15 000</p>
           </article>
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon purple" style="margin-bottom:1.2rem">⚡</div>
             <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.java.badge">Application layer</span>
             <h3 data-i18n="svc.java.title">Java Microservices &amp; API Design</h3>
-            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="svc.java.body">
               Modern Java 17/21 backend engineering with Spring Boot 3, WebFlux reactive stack, 
               and virtual threads. We design API gateways with zero-trust security and 
               event-driven architectures that scale without re-architecture.
             </p>
-            <ul>
+            <ul data-i18n-html="svc.java.list">
               <li>Spring Boot 3 microservices with reactive WebFlux</li>
               <li>Java 21 virtual threads for high-concurrency workloads</li>
               <li>OAuth2 / JWT / mTLS API gateway design</li>
               <li>Event-driven architecture with Kafka and Outbox pattern</li>
               <li>Groovy scripting for NiFi processors and DSL tooling</li>
             </ul>
-            <p class="price">Engagement model: T&amp;M or project · from €6 000 / month</p>
+            <p class="price" data-i18n="svc.java.price">Engagement model: T&amp;M or project · from €6 000 / month</p>
           </article>
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon green" style="margin-bottom:1.2rem">🛡️</div>
             <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.devops.badge">Infrastructure</span>
             <h3 data-i18n="svc.devops.title">DevSecOps &amp; Kubernetes</h3>
-            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="svc.devops.body">
               We build and operate Kubernetes-based infrastructure with GitOps workflows, 
               secrets management, and security posture that satisfies financial regulators. 
               Zero-downtime deployments, auto-scaling, and runbooks included.
             </p>
-            <ul>
+            <ul data-i18n-html="svc.devops.list">
               <li>Kubernetes cluster design, Helm chart authoring</li>
               <li>GitLab CI / GitHub Actions pipeline architecture</li>
               <li>OpenBao / HashiCorp Vault secrets management</li>
               <li>Network security policies, pod security standards</li>
               <li>Observability: Prometheus, Grafana, Loki, alerting</li>
             </ul>
-            <p class="price">Engagement model: retainer or project · from €5 000 / month</p>
+            <p class="price" data-i18n="svc.devops.price">Engagement model: retainer or project · from €5 000 / month</p>
           </article>
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon blue" style="margin-bottom:1.2rem">🌐</div>
             <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.network.badge">Independence</span>
             <h3 data-i18n="svc.network.title">Private Corporate Infrastructure</h3>
-            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="svc.network.body">
               Self-hosted corporate infrastructure that doesn't depend on Big Tech clouds. 
               Mesh VPN networks for secure remote teams, private XMPP messaging servers, 
               and secrets management systems under your full control.
             </p>
-            <ul>
+            <ul data-i18n-html="svc.network.list">
               <li>Headscale + Tailscale mesh VPN for distributed teams</li>
               <li>XMPP / Prosody self-hosted corporate messenger</li>
               <li>OpenBao secrets and credentials management</li>
               <li>Access control policies and network segmentation</li>
               <li>Client onboarding automation and documentation</li>
             </ul>
-            <p class="price">Engagement model: setup + support · from €3 500</p>
+            <p class="price" data-i18n="svc.network.price">Engagement model: setup + support · from €3 500</p>
           </article>
 
           <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan" style="margin-bottom:1.2rem">🔎</div>
             <span class="eyebrow" style="margin-bottom:.5rem" data-i18n="svc.advisory.badge">Advisory</span>
             <h3 data-i18n="svc.advisory.title">Architecture Consulting</h3>
-            <p style="color:var(--muted);line-height:1.75;font-size:.95rem">
+            <p style="color:var(--muted);line-height:1.75;font-size:.95rem" data-i18n="svc.advisory.body">
               Not ready to outsource implementation? We provide expert architecture reviews, 
               integration audits, and technical strategy — so your team builds the right 
               thing from the start and avoids expensive re-architecture later.
             </p>
-            <ul>
+            <ul data-i18n-html="svc.advisory.list">
               <li>Integration landscape audit with findings report</li>
               <li>Architecture design session + decision records</li>
               <li>NiFi / Kafka performance tuning consultation</li>
               <li>Security architecture review for fintech workloads</li>
               <li>Team mentoring and tech lead support</li>
             </ul>
-            <p class="price">Engagement model: daily rate or fixed advisory · from €1 200 / day</p>
+            <p class="price" data-i18n="svc.advisory.price">Engagement model: daily rate or fixed advisory · from €1 200 / day</p>
           </article>
 
         </div>
@@ -196,14 +196,14 @@
       <div class="container">
         <div class="cta-banner">
           <div>
-            <span class="eyebrow">Not sure which service fits?</span>
-            <h2 style="margin:0">Let's talk about your project.</h2>
-            <p style="color:var(--muted);margin:.8rem 0 0;max-width:52ch">
+            <span class="eyebrow" data-i18n="svc.cta.eyebrow">Not sure which service fits?</span>
+            <h2 style="margin:0" data-i18n="svc.cta.h2">Let's talk about your project.</h2>
+            <p style="color:var(--muted);margin:.8rem 0 0;max-width:52ch" data-i18n="svc.cta.lead">
               A 30-minute call is enough to understand your integration challenges 
               and give you a concrete recommendation.
             </p>
           </div>
-          <a class="button primary" href="contact.html">Book a free call →</a>
+          <a class="button primary" href="contact.html" data-i18n="svc.cta.btn">Book a free call →</a>
         </div>
       </div>
     </section>
