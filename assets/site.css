@@ -1017,3 +1017,137 @@ body, .site-header, .panel, .terminal-card,
   transition: background .35s ease, border-color .35s ease, color .25s ease,
               box-shadow .35s ease;
 }
+
+/* ═══════════════════════════════════════════════════════
+   HAMBURGER BUTTON
+   ═══════════════════════════════════════════════════════ */
+.nav-hamburger {
+  display: none;
+  background: rgba(0,153,255,.07);
+  border: 1px solid rgba(0,153,255,.18);
+  border-radius: 10px;
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color .2s, border-color .2s, background .2s;
+  order: 3; /* sits after nav links */
+}
+.nav-hamburger:hover { color: var(--accent-2); border-color: rgba(0,153,255,.35); }
+.nav-hamburger svg { width: 18px; height: 18px; pointer-events: none; }
+/* Animate to X when open */
+.nav-hamburger.is-open { color: var(--accent-2); border-color: rgba(0,153,255,.35); background: rgba(0,153,255,.12); }
+
+[data-theme="light"] .nav-hamburger { background: rgba(0,100,200,.07); border-color: rgba(0,100,200,.18); }
+[data-theme="light"] .nav-hamburger:hover { background: rgba(0,100,200,.12); border-color: rgba(0,100,200,.35); color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════
+   FULL RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Tablet (≤ 960px already handled above) ─────────── */
+@media (max-width: 960px) {
+  .hero { padding-top: 5rem; padding-bottom: 3.5rem; }
+  .hero-panel { padding-top: 0; }
+}
+
+/* ── Mobile (≤ 768px) ────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Navigation */
+  .nav-hamburger { display: flex; }
+  .nav-shell { flex-wrap: nowrap; min-height: 60px; gap: .5rem; position: relative; }
+  .brand { font-size: 1rem; }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: -1.5rem; right: -1.5rem;
+    flex-direction: column;
+    gap: .25rem;
+    padding: .75rem 1rem 1rem;
+    background: rgba(2,11,24,.97);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(0,170,255,.10);
+    z-index: 98;
+    box-shadow: 0 12px 40px rgba(0,0,0,.45);
+  }
+  .site-nav.open { display: flex; }
+  .site-nav a { padding: .65rem 1rem; font-size: 1rem; border-radius: 10px; }
+
+  [data-theme="light"] .site-nav {
+    background: rgba(238,243,251,.98);
+    border-bottom-color: rgba(0,100,200,.09);
+    box-shadow: 0 12px 40px rgba(0,50,120,.10);
+  }
+
+  /* Right side: theme toggle + lang-switcher shrink on mobile */
+  .theme-toggle, .lang-btn { width: 34px; height: 34px; }
+  .lang-code { display: none; } /* hide "EN" text, keep flag only */
+  .lang-chevron { display: none; }
+  .lang-btn { padding: .32rem .4rem; gap: .2rem; }
+
+  /* Hero */
+  .hero { padding-top: 4.5rem; padding-bottom: 3rem; }
+  .hero-grid { gap: 1.5rem; }
+  h1 { font-size: clamp(2rem, 9vw, 2.9rem); max-width: 100%; }
+  .lead { font-size: 1rem; }
+  .hero-actions { gap: .65rem; }
+  .hero-actions .button { padding: .75rem 1.3rem; font-size: .92rem; }
+
+  /* Terminal: tighter on mobile */
+  .terminal-card { border-radius: 14px; }
+  .terminal-body { padding: 1rem; }
+  .terminal-body code, .terminal-body pre { font-size: .76rem; line-height: 1.65; }
+
+  /* Sections */
+  .section { padding: 3rem 0; }
+  .page-intro { padding-top: 4rem; padding-bottom: 1.5rem; }
+  h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+
+  /* Grids → single column */
+  .card-grid   { grid-template-columns: 1fr; gap: 1rem; }
+  .card-grid-2 { grid-template-columns: 1fr; }
+  .tech-grid   { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+
+  /* Mini metrics */
+  .mini-metrics { grid-template-columns: repeat(3, 1fr); gap: .65rem; }
+  .mini-metrics li { padding: .85rem .6rem; }
+  .mini-metrics strong { font-size: 1.2rem; }
+
+  /* Split layout */
+  .split { gap: 2rem; }
+
+  /* Footer */
+  .footer-shell {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .footer-links { flex-wrap: wrap; gap: .5rem; }
+
+  /* CTA banner */
+  .cta-banner { padding: 1.5rem 1rem; }
+
+  /* Live feed / bars */
+  .live-feed-grid { grid-template-columns: 1fr; }
+  .nifi-bars { gap: .4rem; }
+  .tp-label { font-size: .7rem; }
+
+  /* Lang dropdown: always right-align on mobile */
+  .lang-dropdown { right: 0; left: auto; min-width: 130px; }
+}
+
+/* ── Small phone (≤ 480px) ───────────────────────────── */
+@media (max-width: 480px) {
+  .mini-metrics { grid-template-columns: 1fr; gap: .5rem; }
+  .tech-grid    { grid-template-columns: repeat(2, 1fr); }
+  .terminal-body pre { font-size: .7rem; overflow-x: auto; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .button { width: 100%; justify-content: center; }
+  .button.outline { display: none; } /* hide "View case studies" on tiny screens */
+  /* Keep panel compact */
+  .panel { padding: 1.1rem; }
+  h3 { font-size: 1.1rem; }
+}

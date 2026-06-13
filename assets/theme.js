@@ -51,3 +51,34 @@
 
   window.__setTheme = applyTheme;
 }());
+
+/* ── Mobile hamburger menu ──────────────────────────── */
+(function () {
+  var hamburger = document.getElementById('nav-hamburger');
+  var nav       = document.querySelector('.site-nav');
+  if (!hamburger || !nav) return;
+
+  hamburger.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    hamburger.classList.toggle('is-open', open);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function (e) {
+    if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+      nav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.classList.remove('is-open');
+    }
+  });
+
+  // Close on nav link click (for same-page navigation)
+  nav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      nav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.classList.remove('is-open');
+    });
+  });
+}());
