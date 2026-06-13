@@ -915,11 +915,10 @@ article.panel:hover {
   color: var(--text);
 }
 
-/* Hero — hide Vanta canvas, show gradient */
+/* Hero light — Vanta runs with light palette; CSS bg is fallback if Vanta fails */
 [data-theme="light"] #hero-section {
   background: linear-gradient(140deg, #deeafb 0%, #e8f2ff 45%, #e6e8ff 100%);
 }
-[data-theme="light"] #hero-section canvas { display: none !important; }
 
 /* Section dark bands */
 [data-theme="light"] .section-dark {
