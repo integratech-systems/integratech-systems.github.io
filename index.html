@@ -435,20 +435,20 @@
       document.querySelectorAll('[data-aos]').forEach(function(el) { el.removeAttribute('data-aos'); });
     }
 
-    // ── Vanta.js NET — animated mesh network background on hero
-    if (typeof VANTA !== 'undefined' && VANTA.NET
-        && document.documentElement.getAttribute('data-theme') !== 'light') {
+    // ── Vanta.js NET — animated mesh, colors adapt to current theme
+    if (typeof VANTA !== 'undefined' && VANTA.NET) {
+      var _light = document.documentElement.getAttribute('data-theme') === 'light';
       window.__vantaEffect = VANTA.NET({
-        el: '#hero-section',
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        color: 0x0077cc,
-        backgroundColor: 0x020b18,
-        points: 10.0,
-        maxDistance: 26.0,
-        spacing: 20.0,
-        showDots: true,
+        el:              '#hero-section',
+        mouseControls:   true,
+        touchControls:   true,
+        gyroControls:    false,
+        color:           _light ? 0x1a77cc : 0x0077cc,
+        backgroundColor: _light ? 0xe8f1fc : 0x020b18,
+        points:          _light ? 13.0 : 10.0,
+        maxDistance:     _light ? 20.0 : 26.0,
+        spacing:         _light ? 17.0 : 20.0,
+        showDots:        true,
       });
     }
 
