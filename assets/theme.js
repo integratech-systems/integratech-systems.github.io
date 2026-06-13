@@ -10,13 +10,13 @@
   var VANTA_CFG = {
     dark: {
       el: '#vanta-bg', mouseControls: true, touchControls: true, gyroControls: false,
-      color: 0x0077cc, backgroundColor: 0x020b18,
-      points: 10.0, maxDistance: 26.0, spacing: 20.0, showDots: true,
+      color: 0x0088ee, backgroundColor: 0x020b18,
+      points: 12.0, maxDistance: 28.0, spacing: 18.0, showDots: true,
     },
     light: {
       el: '#vanta-bg', mouseControls: true, touchControls: true, gyroControls: false,
-      color: 0x1a77cc, backgroundColor: 0xe8f1fc,
-      points: 13.0, maxDistance: 20.0, spacing: 17.0, showDots: true,
+      color: 0x1a88dd, backgroundColor: 0xe8f1fc,
+      points: 14.0, maxDistance: 22.0, spacing: 16.0, showDots: true,
     },
   };
 
@@ -27,7 +27,15 @@
       try { window.__vantaEffect.destroy(); } catch (e) {}
       window.__vantaEffect = null;
     }
-    try { window.__vantaEffect = VANTA.NET(VANTA_CFG[theme] || VANTA_CFG.dark); } catch (e) {}
+    try {
+      window.__vantaEffect = VANTA.NET(VANTA_CFG[theme] || VANTA_CFG.dark);
+      // Remove solid bg — let gradient from #page-bg show through
+      (function _clearBg() {
+        var eff = window.__vantaEffect;
+        if (eff && eff.renderer) { eff.renderer.setClearColor(0x000000, 0); }
+        else { setTimeout(_clearBg, 80); }
+      })();
+    } catch (e) {}
   }
 
   function applyTheme(theme) {

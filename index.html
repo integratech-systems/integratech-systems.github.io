@@ -483,7 +483,7 @@
       document.querySelectorAll('[data-aos]').forEach(function(el) { el.removeAttribute('data-aos'); });
     }
 
-    // ── Vanta.js NET — animated mesh, colors adapt to current theme
+    // ── Vanta.js NET — animated mesh, transparent background, full-page parallax
     if (typeof VANTA !== 'undefined' && VANTA.NET) {
       var _light = document.documentElement.getAttribute('data-theme') === 'light';
       window.__vantaEffect = VANTA.NET({
@@ -491,14 +491,44 @@
         mouseControls:   true,
         touchControls:   true,
         gyroControls:    false,
-        color:           _light ? 0x1a77cc : 0x0077cc,
+        color:           _light ? 0x1a88dd : 0x0088ee,
         backgroundColor: _light ? 0xe8f1fc : 0x020b18,
-        points:          _light ? 13.0 : 10.0,
-        maxDistance:     _light ? 20.0 : 26.0,
-        spacing:         _light ? 17.0 : 20.0,
+        points:          _light ? 14.0 : 12.0,
+        maxDistance:     _light ? 22.0 : 28.0,
+        spacing:         _light ? 16.0 : 18.0,
         showDots:        true,
       });
+      // Make THREE.js canvas transparent so #page-bg gradient shows through
+      // Vanta uses alpha:true renderer — setClearColor(color, 0) removes solid bg
+      (function _clearVantaBg() {
+        var eff = window.__vantaEffect;
+        if (eff && eff.renderer) {
+          eff.renderer.setClearColor(0x000000, 0);
+        } else {
+          setTimeout(_clearVantaBg, 80);
+        }
+      })();
     }
+
+    // ── Scroll parallax — drift Vanta camera for infinite-space depth
+    (function () {
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var eff = window.__vantaEffect;
+          if (eff && eff.camera) {
+            var frac = window.scrollY /
+              Math.max(1, document.body.scrollHeight - window.innerHeight);
+            // Gentle upward drift + slight zoom-out as user scrolls down
+            eff.camera.position.y  = -frac * 35;
+            eff.camera.position.z  = 160 + frac * 40;
+          }
+          ticking = false;
+        });
+      }, { passive: true });
+    })();
 
     // ── Typed.js — typewriter effect, language-aware
     if (typeof Typed !== 'undefined') {
