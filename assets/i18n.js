@@ -189,9 +189,7 @@
       '404.h1':   'Page not found',
       '404.desc': "This integration endpoint doesn't exist (yet).",
       '404.back': '← Back to home',
-    },
-
-    /* ═══════════════════════════════════════════════════════════ */
+    
       /* ── auto-added translations ── */
       'page.services.lead': 'We deliver end-to-end integration engineering — from architecture consulting to production-grade system implementation and long-term support. Every engagement is tailored to your stack and timeline.',
       'svc.pipeline.body': 'Design and implementation of enterprise data pipelines using Apache NiFi and Apache Kafka as the backbone. We handle high-throughput scenarios (50k+ msg/sec), exactly-once delivery, CDC from Oracle/PostgreSQL, and integration with analytical databases including Greenplum.',
@@ -292,8 +290,10 @@
       'contact.note': 'We typically respond with a 1-page technical assessment within 24 hours — not a generic proposal, but a real opinion on your specific situation.',
       'contact.avail.title': 'Currently available',
       'contact.avail.text': 'We have capacity for 1–2 new projects starting Q3 2026. Long engagements preferred.',
+},
 
-    ru: {
+    /* ═══════════════════════════════════════════════════════════ */
+          ru: {
       /* ── Nav ── */
       'nav.logo':         'IntegraTech',
       'nav.services':     'Услуги',
@@ -475,9 +475,7 @@
       '404.h1':   'Страница не найдена',
       '404.desc': 'Этот эндпоинт интеграции пока не существует.',
       '404.back': '← На главную',
-    },
-
-    /* ═══════════════════════════════════════════════════════════ */
+    
       /* ── auto-added translations ── */
       'page.services.lead': 'Мы обеспечиваем комплексный интеграционный инжиниринг — от архитектурного консалтинга до production-поддержки. Каждый контракт адаптирован к вашему стеку и срокам.',
       'svc.pipeline.body': 'Проектирование и реализация корпоративных конвейеров данных на базе Apache NiFi и Apache Kafka. Обрабатываем высоконагруженные сценарии (50k+ сообщ/сек), семантику exactly-once, CDC из Oracle/PostgreSQL и интеграцию с аналитическими БД, включая Greenplum.',
@@ -578,8 +576,10 @@
       'contact.note': 'Как правило, отвечаем в течение 24 часов с кратким техническим анализом — реальным мнением о вашей конкретной ситуации, а не стандартным предложением.',
       'contact.avail.title': 'Сейчас доступны',
       'contact.avail.text': 'Есть место для 1–2 новых проектов, старт в Q3 2026. Предпочтительны долгосрочные ретейнер-контракты.',
+},
 
-    kz: {
+    /* ═══════════════════════════════════════════════════════════ */
+          kz: {
       /* ── Nav ── */
       'nav.logo':         'IntegraTech',
       'nav.services':     'Қызметтер',
@@ -761,9 +761,7 @@
       '404.h1':   'Бет табылмады',
       '404.desc': 'Бұл интеграция эндпойнті әлі жоқ.',
       '404.back': '← Басты бетке',
-    },
-
-    /* ═══════════════════════════════════════════════════════════ */
+    
       /* ── auto-added translations ── */
       'page.services.lead': 'Біз архитектуралық консалтингтен production деңгейіндегі жүйелерді енгізуге дейін толық интеграциялық инжиниринг жеткіземіз. Әр келісімшарт сіздің стегіңіз бен мерзімдеріңізге бейімделген.',
       'svc.pipeline.body': 'Apache NiFi мен Apache Kafka негізінде корпоративтік деректер конвейерлерін жобалау және іске асыру. Жоғары жүктемелі сценарийлерді (50k+ хбрш/сек), exactly-once жеткізуді, Oracle/PostgreSQL CDC-ні және Greenplum-ды қоса аналитикалық дерекқорлармен интеграцияны қамтамасыз етеміз.',
@@ -864,8 +862,10 @@
       'contact.note': 'Әдетте 24 сағат ішінде 1 беттік техникалық талдаумен жауап береміз — жалпылама ұсыным емес, сіздің нақты жағдайыңыз туралы нақты пікір.',
       'contact.avail.title': 'Қазір қол жетімді',
       'contact.avail.text': 'Q3 2026-дан бастап 1-2 жаңа жобаға орын бар. Ұзақ мерзімді ретейнер келісімшарттарын қалаймыз.',
+},
 
-    de: {
+    /* ═══════════════════════════════════════════════════════════ */
+          de: {
       /* ── Nav ── */
       'nav.logo':         'IntegraTech',
       'nav.services':     'Leistungen',
@@ -1027,9 +1027,7 @@
       '404.h1':   'Seite nicht gefunden',
       '404.desc': 'Dieser Integrations-Endpunkt existiert (noch) nicht.',
       '404.back': '← Zurück zur Startseite',
-    },
-
-    /* ═══════════════════════════════════════════════════════════ */
+    
       /* ── auto-added translations ── */
       'page.services.lead': 'Wir liefern ganzheitliches Integrationsengineering — von der Architekturberatung bis zur produktionsfertigen Systemimplementierung und Langzeitunterstützung. Jedes Engagement ist auf Ihren Stack und Ihre Zeitplanung zugeschnitten.',
       'svc.pipeline.body': 'Konzeption und Implementierung von Enterprise-Datenpipelines mit Apache NiFi und Apache Kafka als Backbone. Wir bewältigen Hochdurchsatz-Szenarien (50k+ Nachrichten/Sek.), Exactly-Once-Delivery, CDC aus Oracle/PostgreSQL und Integration mit analytischen Datenbanken einschließlich Greenplum.',
@@ -1130,8 +1128,10 @@
       'contact.note': 'Wir antworten typischerweise innerhalb von 24 Stunden mit einer 1-seitigen technischen Einschätzung — keine generische Vorlage, sondern eine echte Meinung zu Ihrer konkreten Situation.',
       'contact.avail.title': 'Derzeit verfügbar',
       'contact.avail.text': 'Wir haben Kapazität für 1–2 neue Projekte ab Q3 2026. Langfristige Engagements bevorzugt.',
+},
 
-    fr: {
+    /* ═══════════════════════════════════════════════════════════ */
+          fr: {
       /* ── Nav ── */
       'nav.logo':         'IntegraTech',
       'nav.services':     'Services',
