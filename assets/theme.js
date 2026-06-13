@@ -9,12 +9,12 @@
 
   var VANTA_CFG = {
     dark: {
-      el: '#hero-section', mouseControls: true, touchControls: true, gyroControls: false,
+      el: '#vanta-bg', mouseControls: true, touchControls: true, gyroControls: false,
       color: 0x0077cc, backgroundColor: 0x020b18,
       points: 10.0, maxDistance: 26.0, spacing: 20.0, showDots: true,
     },
     light: {
-      el: '#hero-section', mouseControls: true, touchControls: true, gyroControls: false,
+      el: '#vanta-bg', mouseControls: true, touchControls: true, gyroControls: false,
       color: 0x1a77cc, backgroundColor: 0xe8f1fc,
       points: 13.0, maxDistance: 20.0, spacing: 17.0, showDots: true,
     },
@@ -22,7 +22,7 @@
 
   function reinitVanta(theme) {
     if (typeof VANTA === 'undefined' || !VANTA.NET) return;
-    if (!document.getElementById('hero-section'))    return;
+    if (!document.getElementById('vanta-bg')) return;
     if (window.__vantaEffect) {
       try { window.__vantaEffect.destroy(); } catch (e) {}
       window.__vantaEffect = null;
