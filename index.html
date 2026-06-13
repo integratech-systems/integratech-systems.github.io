@@ -31,6 +31,8 @@
       <button class="lang-option active" data-lang="en">🇬🇧 English</button>
       <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
       <button class="lang-option" data-lang="kz">🇰🇿 Қазақша</button>
+      <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+      <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
     </div>
   </div>
     </div>
@@ -434,24 +436,38 @@
       });
     }
 
-    // ── Typed.js — typewriter effect in hero headline
+    // ── Typed.js — typewriter effect, language-aware
     if (typeof Typed !== 'undefined') {
-      new Typed('#typed-word', {
-        strings: [
-          "simple APIs don\u2019t work.",
-          "standard ETL falls short.",
-          "off-the-shelf tools break.",
-          "latency becomes critical.",
-          "data consistency matters.",
-        ],
+      function _getTypedStrings() {
+        var lang = localStorage.getItem('it_lang') || 'en';
+        return (window.I18N && window.I18N[lang] && window.I18N[lang]['typed.strings'])
+             ? window.I18N[lang]['typed.strings']
+             : ["simple APIs don’t work.", "standard ETL falls short.",
+                "off-the-shelf tools break.", "latency becomes critical.",
+                "data consistency matters."];
+      }
+      window.__typedInst = new Typed('#typed-word', {
+        strings: _getTypedStrings(),
         typeSpeed: 52,
         backSpeed: 28,
         backDelay: 2400,
         startDelay: 700,
         loop: true,
         smartBackspace: false,
-        cursorChar: '\u258c',
+        cursorChar: '▌',
       });
+      window.__reinitTyped = function(strings) {
+        if (window.__typedInst) {
+          window.__typedInst.destroy();
+          document.getElementById('typed-word').innerHTML = '';
+        }
+        window.__typedInst = new Typed('#typed-word', {
+          strings: strings,
+          typeSpeed: 52, backSpeed: 28, backDelay: 2400,
+          startDelay: 150, loop: true, smartBackspace: false,
+          cursorChar: '▌',
+        });
+      };
     }
 
     // ── CountUp.js — animated metrics (fires once when in viewport)
