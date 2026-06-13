@@ -201,5 +201,41 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
   <script src="assets/i18n.js"></script>
+
+  <!-- IntegraTech Visitor Tracker — pixel + heartbeat -->
+  <script>
+  (function() {
+    var _base = 'https://openstreaming.online/track/px';
+    var _sid  = Math.random().toString(36).substr(2, 12);
+    var _page = location.pathname.replace(/\/index\.html$/, '/') || '/';
+    var _lang = (navigator.language || '').substr(0, 5);
+    var _fired = false;
+
+    function _px(ev) {
+      var url = _base
+        + '?e=' + ev
+        + '&s=' + encodeURIComponent(_sid)
+        + '&p=' + encodeURIComponent(_page)
+        + '&l=' + encodeURIComponent(_lang)
+        + '&_=' + Date.now();
+      new Image().src = url;
+    }
+
+    // Initial view event (after small delay so page is fully rendered)
+    setTimeout(function() {
+      if (!_fired) { _fired = true; _px('view'); }
+    }, 800);
+
+    // Heartbeat every 30s to track time-on-site
+    var _hb = setInterval(function() { _px('ping'); }, 30000);
+
+    // Exit event
+    window.addEventListener('beforeunload', function() {
+      clearInterval(_hb);
+      _px('exit');
+    });
+  }());
+  </script>
+  <!-- End Tracker -->
 </body>
 </html>
