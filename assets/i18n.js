@@ -138,6 +138,7 @@
       'case2.title': 'МосБиржа Real-time Feed: 60% Latency Reduction on Market Data Pipeline',
       'case3.title': 'ДИТ Москвы: City-Scale Data Integration for 40+ Source Systems',
       'case4.title': 'Private Corporate Network: Zero Big-Tech Dependency for a 30-Person Team',
+      'case5.title': 'FluidTrader — Reactive Algorithmic Trading Platform (Fintech R&D)',
 
       /* ── open-source.html ── */
       'page.stack.eyebrow': 'Our toolbox',
@@ -322,6 +323,7 @@
       'case2.title': 'Фид МосБиржи реального времени: снижение задержки на 60%',
       'case3.title': 'ДИТ Москвы: городская интеграция данных из 40+ систем',
       'case4.title': 'Приватная корпоративная сеть: нулевая зависимость от BigTech для 30 сотрудников',
+      'case5.title': 'FluidTrader — Реактивная алгоритмическая торговая платформа (Fintech R&D)',
 
       /* ── open-source.html ── */
       'page.stack.eyebrow': 'Наш инструментарий',
@@ -506,6 +508,7 @@
       'case2.title': 'МосБиржа нақты уақыт ағыны: нарық деректер конвейерінде кідірісті 60%-ға азайту',
       'case3.title': 'ДИТ Москва: 40+ жүйеден қалалық деректер интеграциясы',
       'case4.title': 'Жеке корпоративтік желі: 30 қызметкерлік команда үшін BigTech тәуелділігінен нөлдік тәуелділік',
+      'case5.title': 'FluidTrader — Реактивті алгоритмдік сауда платформасы (Fintech R&D)',
 
       /* ── open-source.html ── */
       'page.stack.eyebrow': 'Біздің инструментарий',
@@ -675,6 +678,7 @@
       'case2.title': 'МосБиржа Echtzeit-Feed: 60 % Latenzreduzierung bei Marktdaten-Pipeline',
       'case3.title': 'ДИТ Moskau: Stadtweite Datenintegration für 40+ Quellsysteme',
       'case4.title': 'Privates Unternehmensnetzwerk: Null Big-Tech-Abhängigkeit für ein 30-köpfiges Team',
+      'case5.title': 'FluidTrader — Reaktive Algorithmische Handelsplattform (Fintech F&E)',
 
       'page.stack.eyebrow': 'Unsere Werkzeuge',
       'page.stack.h1':      'Technologie-Stack',
@@ -839,6 +843,7 @@
       'case2.title': 'Flux temps réel МосБиржа : Réduction de latence de 60 % sur le pipeline de données de marché',
       'case3.title': 'ДИТ Moscou : Intégration de données à léchelle urbaine pour 40+ systèmes sources',
       'case4.title': "Réseau d'entreprise privé : Zéro dépendance Big Tech pour une équipe de 30 personnes",
+      'case5.title': "FluidTrader — Plateforme de Trading Algorithmique Réactif (Fintech R&D)",
 
       'page.stack.eyebrow': 'Notre boîte à outils',
       'page.stack.h1':      'Stack technologique',
