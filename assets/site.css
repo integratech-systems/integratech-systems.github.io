@@ -74,7 +74,13 @@ a { color: inherit; text-decoration: none; }
 /* ─── SECTIONS ─────────────────────────────────────── */
 .hero, .section { padding: 5rem 0; }
 .hero { padding-top: 7rem; padding-bottom: 6rem; }
-.hero-grid, .split {
+.hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: start; /* independent: terminal won't shift when h1 height changes */
+}
+.split {
   display: grid;
   gap: 2.5rem;
   grid-template-columns: 1.25fr 0.75fr;
@@ -213,6 +219,7 @@ article.panel:hover {
 .hero-panel {
   display: flex;
   flex-direction: column;
+  padding-top: 1rem; /* slight offset to balance with left column eyebrow text */
 }
 .terminal-card {
   width: 100%;
@@ -614,7 +621,8 @@ article.panel:hover {
 /* ─── TYPED WORD GLOW ────────────────────────────────── */
 #typed-word {
   display: block;
-  min-height: 1.25em;
+  height: 2.7em;          /* fixed: reserves space for 2 lines, prevents layout shift */
+  overflow: hidden;
   text-shadow: 0 0 22px rgba(0, 229, 255, .55), 0 0 44px rgba(0, 229, 255, .22);
 }
 
