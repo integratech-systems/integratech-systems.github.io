@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
   <header class="site-header">
@@ -41,7 +42,7 @@
       <div class="container" style="display:grid;gap:2rem">
 
         <!-- Case 1 -->
-        <article class="panel case-card">
+        <article class="panel case-card" data-aos="fade-up" data-aos-delay="0">
           <div class="case-meta">
             <span class="badge">🏦 Banking</span>
             <span class="badge">NiFi + Kafka</span>
@@ -73,7 +74,7 @@
         </article>
 
         <!-- Case 2 -->
-        <article class="panel case-card">
+        <article class="panel case-card" data-aos="fade-up" data-aos-delay="0">
           <div class="case-meta">
             <span class="badge">📈 Trading</span>
             <span class="badge">WebSocket + PostgreSQL</span>
@@ -106,7 +107,7 @@
         </article>
 
         <!-- Case 3 -->
-        <article class="panel case-card">
+        <article class="panel case-card" data-aos="fade-up" data-aos-delay="0">
           <div class="case-meta">
             <span class="badge">🏛️ Government</span>
             <span class="badge">NiFi + Greenplum</span>
@@ -139,7 +140,7 @@
         </article>
 
         <!-- Case 4 -->
-        <article class="panel case-card">
+        <article class="panel case-card" data-aos="fade-up" data-aos-delay="0">
           <div class="case-meta">
             <span class="badge">🔐 Enterprise</span>
             <span class="badge">Headscale + OpenBao</span>
@@ -216,5 +217,7 @@
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
 </body>
 </html>

@@ -515,6 +515,58 @@ article.panel:hover {
 .footer-links a { color: var(--muted); font-size: 0.9rem; transition: color .2s; }
 .footer-links a:hover { color: var(--text); }
 
+/* ─── HERO VANTA BACKGROUND ─────────────────────────── */
+.hero { position: relative; overflow: hidden; }
+.hero > .container { position: relative; z-index: 2; }
+
+/* ─── ANIMATED TERMINAL LINES ───────────────────────── */
+#terminal-output {
+  font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #a8d8ff;
+}
+.term-line {
+  display: block;
+  white-space: pre;
+  opacity: 0;
+  animation: termReveal 0.28s ease forwards;
+}
+.t-pod { color: #93c5fd; }
+.t-tag { opacity: 0.55; }
+.term-line:nth-child(1)  { animation-delay: 0.30s; }
+.term-line:nth-child(2)  { animation-delay: 0.62s; }
+.term-line:nth-child(3)  { animation-delay: 0.88s; }
+.term-line:nth-child(4)  { animation-delay: 1.10s; }
+.term-line:nth-child(5)  { animation-delay: 1.32s; }
+.term-line:nth-child(6)  { animation-delay: 1.54s; }
+.term-line:nth-child(7)  { animation-delay: 1.76s; }
+.term-line:nth-child(8)  { animation-delay: 1.96s; }
+.term-line:nth-child(9)  { animation-delay: 2.14s; }
+.term-line:nth-child(10) { animation-delay: 2.32s; }
+.term-line:nth-child(11) { animation-delay: 2.58s; }
+.term-line:nth-child(12) { animation-delay: 2.78s; }
+.term-line:nth-child(13) { animation-delay: 3.02s; }
+.term-line:nth-child(14) { animation-delay: 3.16s; }
+.term-line:nth-child(15) { animation-delay: 3.30s; }
+.term-line:nth-child(16) { animation-delay: 3.44s; }
+.term-line:nth-child(17) { animation-delay: 3.58s; }
+@keyframes termReveal {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── TYPED.JS CURSOR ────────────────────────────────── */
+.typed-cursor {
+  color: var(--accent-2);
+  font-weight: 300;
+  animation: typedBlink 0.75s step-end infinite;
+}
+@keyframes typedBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 /* ─── SOCIAL ICONS ───────────────────────────────────── */
 .footer-social { display: flex; gap: .5rem; align-items: center; }
 .social-icon {

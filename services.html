@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
   <header class="site-header">
@@ -41,7 +42,7 @@
       <div class="container">
         <div class="services-grid">
 
-          <article class="panel service-card">
+          <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon blue" style="margin-bottom:1.2rem">🔄</div>
             <span class="eyebrow" style="margin-bottom:.5rem">Core service</span>
             <h3>Data Pipeline Engineering</h3>
@@ -60,7 +61,7 @@
             <p class="price">Engagement model: project-based or retainer · from €8 000 / project</p>
           </article>
 
-          <article class="panel service-card">
+          <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan" style="margin-bottom:1.2rem">🏦</div>
             <span class="eyebrow" style="margin-bottom:.5rem">Fintech speciality</span>
             <h3>Financial System Integration</h3>
@@ -79,7 +80,7 @@
             <p class="price">Engagement model: fixed-scope contract · from €15 000</p>
           </article>
 
-          <article class="panel service-card">
+          <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon purple" style="margin-bottom:1.2rem">⚡</div>
             <span class="eyebrow" style="margin-bottom:.5rem">Application layer</span>
             <h3>Java Microservices &amp; API Design</h3>
@@ -98,7 +99,7 @@
             <p class="price">Engagement model: T&amp;M or project · from €6 000 / month</p>
           </article>
 
-          <article class="panel service-card">
+          <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon green" style="margin-bottom:1.2rem">🛡️</div>
             <span class="eyebrow" style="margin-bottom:.5rem">Infrastructure</span>
             <h3>DevSecOps &amp; Kubernetes</h3>
@@ -117,7 +118,7 @@
             <p class="price">Engagement model: retainer or project · from €5 000 / month</p>
           </article>
 
-          <article class="panel service-card">
+          <article class="panel service-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon blue" style="margin-bottom:1.2rem">🌐</div>
             <span class="eyebrow" style="margin-bottom:.5rem">Independence</span>
             <h3>Private Corporate Infrastructure</h3>
@@ -136,7 +137,7 @@
             <p class="price">Engagement model: setup + support · from €3 500</p>
           </article>
 
-          <article class="panel service-card">
+          <article class="panel service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan" style="margin-bottom:1.2rem">🔎</div>
             <span class="eyebrow" style="margin-bottom:.5rem">Advisory</span>
             <h3>Architecture Consulting</h3>
@@ -201,5 +202,7 @@
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
 </body>
 </html>

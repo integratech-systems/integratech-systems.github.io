@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
   <header class="site-header">
@@ -25,14 +26,14 @@
 
   <main>
     <!-- ── HERO ─────────────────────────────────────── -->
-    <section class="hero">
+    <section class="hero" id="hero-section">
       <div class="container hero-grid">
         <div>
           <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;">
             <span class="eyebrow" style="margin:0">Enterprise Integration Engineering</span>
             <span class="badge">🟢 Available Q3 2026</span>
           </div>
-          <h1>We build systems where simple APIs don't work.</h1>
+          <h1>We build systems where <span id="typed-word" style="color:var(--accent-2)"></span></h1>
           <p class="lead">
             IntegraTech designs and delivers enterprise integration platforms for financial 
             institutions and industrial enterprises — from SWIFT pipelines to real-time 
@@ -48,15 +49,15 @@
           </div>
           <ul class="mini-metrics">
             <li>
-              <strong>12+</strong>
+              <strong><span id="cnt-projects">12</span>+</strong>
               <span>enterprise projects delivered</span>
             </li>
             <li>
-              <strong>99.9%</strong>
+              <strong><span id="cnt-uptime">99.9</span>%</strong>
               <span>pipeline uptime SLA</span>
             </li>
             <li>
-              <strong>Java 21</strong>
+              <strong>Java&nbsp;<span id="cnt-java">21</span></strong>
               <span>modern stack, zero legacy tech debt</span>
             </li>
           </ul>
@@ -71,23 +72,25 @@
               <span class="terminal-title">integratech-pipeline.sh</span>
             </div>
             <div class="terminal-body">
-              <pre><code><span class="t-prompt">$</span> <span class="t-cmd">./nifi-pipeline status</span>
-
-<span class="t-ok">✓</span> SWIFT MT103 → NiFi → Kafka   <span class="t-ok">[running]</span>
-<span class="t-ok">✓</span> Kafka → Greenplum CDC         <span class="t-ok">[running]</span>
-<span class="t-ok">✓</span> МосБиржа WebSocket feed       <span class="t-ok">[running]</span>
-<span class="t-ok">✓</span> NРД settlement sync           <span class="t-ok">[running]</span>
-<span class="t-dim">─────────────────────────────────</span>
-<span class="t-ok">✓</span> throughput:  <span class="t-cmd">48 200 msg/sec</span>
-<span class="t-ok">✓</span> latency p99: <span class="t-cmd">3.2 ms</span>
-<span class="t-ok">✓</span> uptime:      <span class="t-cmd">99.97 %</span>
-
-<span class="t-prompt">$</span> <span class="t-cmd">kubectl get pods -n integrations</span>
-<span class="t-dim">NAME                    READY   STATUS</span>
-nifi-0                  <span class="t-ok">1/1</span>     Running
-kafka-broker-0          <span class="t-ok">1/1</span>     Running
-swift-gateway-7f9       <span class="t-ok">1/1</span>     Running
-api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
+              <div id="terminal-output">
+                <div class="term-line"><span class="t-prompt">$</span> <span class="t-cmd">./nifi-pipeline status</span></div>
+                <div class="term-line">&nbsp;</div>
+                <div class="term-line"><span class="t-ok">✓ SWIFT MT103 → NiFi → Kafka   <span class="t-tag">[running]</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ Kafka → Greenplum CDC         <span class="t-tag">[running]</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ МосБиржа WebSocket feed       <span class="t-tag">[running]</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ НРД settlement sync           <span class="t-tag">[running]</span></span></div>
+                <div class="term-line"><span class="t-dim">─────────────────────────────────</span></div>
+                <div class="term-line"><span class="t-ok">✓ throughput:  <span class="t-cmd">48 200 msg/sec</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ latency p99: <span class="t-cmd">3.2 ms</span></span></div>
+                <div class="term-line"><span class="t-ok">✓ uptime:      <span class="t-cmd">99.97 %</span></span></div>
+                <div class="term-line">&nbsp;</div>
+                <div class="term-line"><span class="t-prompt">$</span> <span class="t-cmd">kubectl get pods -n integrations</span></div>
+                <div class="term-line"><span class="t-dim">NAME                    READY   STATUS</span></div>
+                <div class="term-line"><span class="t-pod">nifi-0              </span>    <span class="t-ok">1/1</span>     <span class="t-ok">Running</span></div>
+                <div class="term-line"><span class="t-pod">kafka-broker-0      </span>    <span class="t-ok">1/1</span>     <span class="t-ok">Running</span></div>
+                <div class="term-line"><span class="t-pod">swift-gateway-7f9   </span>    <span class="t-ok">1/1</span>     <span class="t-ok">Running</span></div>
+                <div class="term-line"><span class="t-pod">api-gateway-6c4     </span>    <span class="t-ok">1/1</span>     <span class="t-ok">Running</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -108,7 +111,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
           </p>
         </div>
         <div class="card-grid">
-          <article class="panel">
+          <article class="panel" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon blue">🔄</div>
             <h3>Data Pipeline Engineering</h3>
             <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
@@ -116,7 +119,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               PostgreSQL/Oracle, and Greenplum analytics integration. Handles 50k+ msg/sec.
             </p>
           </article>
-          <article class="panel">
+          <article class="panel" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon cyan">🏦</div>
             <h3>Financial System Integration</h3>
             <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
@@ -124,7 +127,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               connectors for the most demanding financial infrastructure in Russia and the CIS.
             </p>
           </article>
-          <article class="panel">
+          <article class="panel" data-aos="fade-up" data-aos-delay="200">
             <div class="card-icon purple">⚡</div>
             <h3>Java Microservices</h3>
             <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
@@ -132,7 +135,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               event-driven design. API gateways with OAuth2, JWT, mTLS for zero-trust environments.
             </p>
           </article>
-          <article class="panel">
+          <article class="panel" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon green">🛡️</div>
             <h3>DevSecOps &amp; Infrastructure</h3>
             <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
@@ -140,7 +143,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               Security-first by design — not added as an afterthought.
             </p>
           </article>
-          <article class="panel">
+          <article class="panel" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon blue">🌐</div>
             <h3>Private Network Infrastructure</h3>
             <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
@@ -148,7 +151,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               isolated corporate infrastructure free from Big Tech dependency.
             </p>
           </article>
-          <article class="panel">
+          <article class="panel" data-aos="fade-up" data-aos-delay="200">
             <div class="card-icon cyan">📊</div>
             <h3>Real-time &amp; Analytics</h3>
             <p style="color:var(--muted);line-height:1.7;font-size:.95rem">
@@ -207,7 +210,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
           <h2>From legacy mess to reliable pipelines.</h2>
         </div>
         <div class="card-grid">
-          <article class="panel" style="text-align:center;padding:2rem 1.5rem">
+          <article class="panel" style="text-align:center;padding:2rem 1.5rem" data-aos="fade-up" data-aos-delay="0">
             <div style="font-size:2rem;margin-bottom:1rem">🔍</div>
             <h3>1. Audit &amp; Architecture</h3>
             <p style="color:var(--muted);font-size:.93rem;line-height:1.7">
@@ -215,7 +218,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               and design a target architecture with clear migration paths.
             </p>
           </article>
-          <article class="panel" style="text-align:center;padding:2rem 1.5rem">
+          <article class="panel" style="text-align:center;padding:2rem 1.5rem" data-aos="fade-up" data-aos-delay="150">
             <div style="font-size:2rem;margin-bottom:1rem">⚙️</div>
             <h3>2. Build &amp; Integrate</h3>
             <p style="color:var(--muted);font-size:.93rem;line-height:1.7">
@@ -223,7 +226,7 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
               error handling, and exactly-once delivery guarantees where required.
             </p>
           </article>
-          <article class="panel" style="text-align:center;padding:2rem 1.5rem">
+          <article class="panel" style="text-align:center;padding:2rem 1.5rem" data-aos="fade-up" data-aos-delay="300">
             <div style="font-size:2rem;margin-bottom:1rem">🚀</div>
             <h3>3. Deploy &amp; Operate</h3>
             <p style="color:var(--muted);font-size:.93rem;line-height:1.7">
@@ -281,5 +284,83 @@ api-gateway-6c4         <span class="t-ok">1/1</span>     Running</code></pre>
       </div>
     </div>
   </footer>
+
+  <!-- ── ANIMATION LIBRARIES ── -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+  <script>
+  (function () {
+    // ── AOS — scroll reveal on all cards
+    AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });
+
+    // ── Vanta.js NET — animated mesh network background on hero
+    if (typeof VANTA !== 'undefined' && VANTA.NET) {
+      VANTA.NET({
+        el: '#hero-section',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        color: 0x0077cc,
+        backgroundColor: 0x020b18,
+        points: 10.0,
+        maxDistance: 26.0,
+        spacing: 20.0,
+        showDots: true,
+      });
+    }
+
+    // ── Typed.js — typewriter effect in hero headline
+    if (typeof Typed !== 'undefined') {
+      new Typed('#typed-word', {
+        strings: [
+          "simple APIs don\u2019t work.",
+          "standard ETL falls short.",
+          "off-the-shelf tools break.",
+          "latency becomes critical.",
+          "data consistency matters.",
+        ],
+        typeSpeed: 52,
+        backSpeed: 28,
+        backDelay: 2400,
+        startDelay: 700,
+        loop: true,
+        smartBackspace: false,
+        cursorChar: '\u258c',
+      });
+    }
+
+    // ── CountUp.js — animated metrics (fires once when in viewport)
+    var CountUpCls = (typeof CountUp !== 'undefined') ? CountUp
+                   : (typeof countUp !== 'undefined' ? countUp.CountUp : null);
+    if (CountUpCls) {
+      var metrics = [
+        { id: 'cnt-projects', end: 12,    opts: { suffix: '+', duration: 1.8 } },
+        { id: 'cnt-uptime',   end: 99.97, opts: { decimalPlaces: 2, suffix: '%', duration: 2.2 } },
+        { id: 'cnt-java',     end: 21,    opts: { duration: 1.2 } },
+      ];
+      var started = {};
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var id = entry.target.id;
+          if (entry.isIntersecting && !started[id]) {
+            started[id] = true;
+            var m = metrics.filter(function (x) { return x.id === id; })[0];
+            if (m) {
+              var cu = new CountUpCls(id, m.end, m.opts);
+              if (!cu.error) cu.start();
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+      metrics.forEach(function (m) {
+        var el = document.getElementById(m.id);
+        if (el) observer.observe(el);
+      });
+    }
+  }());
+  </script>
 </body>
 </html>

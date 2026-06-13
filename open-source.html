@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
   <header class="site-header">
@@ -148,7 +149,7 @@
         </div>
 
         <!-- Philosophy box -->
-        <div class="panel" style="padding:2.5rem">
+        <div class="panel" style="padding:2.5rem" data-aos="fade-up">
           <span class="eyebrow">Engineering philosophy</span>
           <h2 style="font-size:1.8rem;margin-bottom:1.2rem">Why we don't chase trends</h2>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
@@ -216,5 +217,7 @@
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
 </body>
 </html>

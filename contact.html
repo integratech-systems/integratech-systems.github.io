@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
   <header class="site-header">
@@ -44,7 +45,7 @@
         <div>
           <h2 style="font-size:1.6rem;margin-bottom:1.5rem">Reach us directly</h2>
 
-          <a class="contact-item" href="mailto:integratech-systems@outlook.com">
+          <a class="contact-item" data-aos="fade-right" data-aos-delay="160" data-aos="fade-right" data-aos-delay="80" data-aos="fade-right" data-aos-delay="0" href="mailto:integratech-systems@outlook.com">
             <span class="contact-item-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </span>
@@ -183,5 +184,7 @@
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 680, once: true, offset: 55, easing: 'ease-out-cubic' });</script>
 </body>
 </html>
