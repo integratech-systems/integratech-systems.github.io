@@ -11,6 +11,7 @@ The intended architecture is simple:
 Usage:
   python3 tests/static_background_check.py --url http://127.0.0.1:8123
   python3 tests/static_background_check.py --url https://integratech-systems.github.io
+  python3 tests/static_background_check.py --full --url https://integratech-systems.github.io
 """
 
 from __future__ import annotations
@@ -37,6 +38,9 @@ VIEWPORTS = [
     ("tablet", 768, 1024),
     ("mobile", 390, 844),
 ]
+
+SMOKE_PAGES = ["index.html", "services.html"]
+SMOKE_VIEWPORTS = [("mobile", 390, 844)]
 
 
 class Check:
@@ -66,7 +70,7 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
         """
     )
     await page.goto(url, wait_until="domcontentloaded")
-    await page.wait_for_timeout(2800)
+    await page.wait_for_timeout(1200)
 
     label = f"{url.split('/')[-1] or 'index.html'} / {theme} / {width}x{height}"
     print(f"\n── {label} ─────────────────────────────")
@@ -215,7 +219,7 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
         }"""
     )
     await page.mouse.move(width - 80, 90)
-    await page.wait_for_timeout(250)
+    await page.wait_for_timeout(120)
     after_pointer = await page.evaluate(
         """() => {
           const e = window.__vantaEffect;
@@ -231,12 +235,12 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
         )
 
     await page.mouse.click(width // 2, height // 2)
-    await page.wait_for_timeout(80)
+    await page.wait_for_timeout(50)
     pulse_class = await page.evaluate("document.getElementById('vanta-bg').classList.contains('vanta-pulse')")
     check.ok(pulse_class, "Vanta background reacts to click with pulse")
 
     await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-    await page.wait_for_timeout(500)
+    await page.wait_for_timeout(150)
 
     rect_after_scroll = await page.eval_on_selector(
         "#vanta-bg",
@@ -252,20 +256,26 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
 
     # Toggle theme twice and ensure Vanta does not duplicate canvases.
     await page.evaluate("window.__setTheme && window.__setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')")
-    await page.wait_for_timeout(900)
+    await page.wait_for_timeout(250)
     await page.evaluate("window.__setTheme && window.__setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')")
-    await page.wait_for_timeout(900)
+    await page.wait_for_timeout(250)
     after_toggle_canvas_count = await page.locator("#vanta-bg canvas").count()
     check.ok(after_toggle_canvas_count == 1, "theme toggle keeps exactly one Vanta canvas", f"got {after_toggle_canvas_count}")
 
 
-async def run(url: str, headed: bool) -> int:
+async def run(url: str, headed: bool, full: bool) -> int:
     check = Check()
+    pages = PAGES if full else SMOKE_PAGES
+    viewports = VIEWPORTS if full else SMOKE_VIEWPORTS
+    mode = "full regression" if full else "quick smoke"
+    print(f"Static background check mode: {mode}")
+    print(f"Pages: {', '.join(pages)}")
+    print(f"Viewports: {', '.join(v[0] for v in viewports)}")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=not headed)
-        for viewport_name, width, height in VIEWPORTS:
+        for viewport_name, width, height in viewports:
             for theme in THEMES:
-                for page_name in PAGES:
+                for page_name in pages:
                     context = await browser.new_context(viewport={"width": width, "height": height})
                     page = await context.new_page()
                     try:
@@ -292,8 +302,9 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="https://integratech-systems.github.io")
     parser.add_argument("--headed", action="store_true")
+    parser.add_argument("--full", action="store_true", help="run full 6 pages x 2 themes x 3 viewports regression")
     args = parser.parse_args()
-    sys.exit(asyncio.run(run(args.url, args.headed)))
+    sys.exit(asyncio.run(run(args.url, args.headed, args.full)))
 
 
 if __name__ == "__main__":
