@@ -16,13 +16,14 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--text);
   background: transparent;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ── Fixed background layers (behind everything) ───── */
@@ -1047,9 +1048,9 @@ article.panel:hover {
   color: var(--text);
 }
 
-/* Hero light — Vanta runs with light palette; CSS bg is fallback if Vanta fails */
+/* Hero light — keep transparent so the single fixed Vanta graph is visible */
 [data-theme="light"] #hero-section {
-  background: linear-gradient(140deg, #deeafb 0%, #e8f2ff 45%, #e6e8ff 100%);
+  background: transparent;
 }
 
 /* Section dark bands */
@@ -1182,6 +1183,14 @@ body, .site-header, .panel, .terminal-card,
 @media (max-width: 960px) {
   .hero { padding-top: 5rem; padding-bottom: 3.5rem; }
   .hero-panel { padding-top: 0; }
+  [data-aos="fade-left"],
+  [data-aos="fade-right"] {
+    transform: none !important;
+  }
+  [data-aos="fade-left"].aos-animate,
+  [data-aos="fade-right"].aos-animate {
+    transform: none !important;
+  }
 }
 
 /* ── Mobile (≤ 768px) ────────────────────────────────── */

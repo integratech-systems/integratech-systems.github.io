@@ -131,6 +131,34 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
     theme_attr = await page.evaluate("document.documentElement.getAttribute('data-theme')")
     check.ok(theme_attr == theme, "requested theme is applied", f"got {theme_attr}")
 
+    width_state = await page.evaluate(
+        """() => ({
+          htmlScrollWidth: document.documentElement.scrollWidth,
+          bodyScrollWidth: document.body.scrollWidth,
+          innerWidth: window.innerWidth
+        })"""
+    )
+    check.ok(
+        width_state["htmlScrollWidth"] <= width_state["innerWidth"]
+        and width_state["bodyScrollWidth"] <= width_state["innerWidth"],
+        "no horizontal overflow",
+        str(width_state),
+    )
+
+    if theme == "light" and (url.endswith("/") or url.endswith("index.html")):
+        hero_bg = await page.eval_on_selector(
+            "#hero-section",
+            """el => {
+              const s = getComputedStyle(el);
+              return { image: s.backgroundImage, color: s.backgroundColor };
+            }""",
+        )
+        check.ok(
+            hero_bg["image"] == "none" and hero_bg["color"] == "rgba(0, 0, 0, 0)",
+            "light hero is transparent so fixed Vanta graph remains visible",
+            str(hero_bg),
+        )
+
     vanta_exists = await page.evaluate("Boolean(window.__vantaEffect && window.__vantaEffect.camera)")
     check.ok(vanta_exists, "Vanta effect initialized")
     interactive = await page.evaluate(
