@@ -145,6 +145,45 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
         str(width_state),
     )
 
+    if width <= 480:
+        mobile_shells = await page.evaluate(
+            """() => {
+              const selectors = [
+                '.hero-grid', '.hero-panel', '.terminal-card',
+                '.manifesto-inner', '.manifesto-text', '.manifesto-stats',
+                '.card-grid', '.card-grid-2', '.split', '.cta-banner',
+                '.live-feed-grid', '.contact-grid', '.stack-list'
+              ];
+              const vw = window.innerWidth;
+              const bad = [];
+              for (const sel of selectors) {
+                document.querySelectorAll(sel).forEach((el, index) => {
+                  const r = el.getBoundingClientRect();
+                  if (r.width < 30 || r.height < 10) return;
+                  const left = r.left;
+                  const right = vw - r.right;
+                  const diff = left - right;
+                  if (left < -1 || right < -1 || Math.abs(diff) > 4) {
+                    bad.push({
+                      selector: sel,
+                      index,
+                      left: Number(left.toFixed(1)),
+                      right: Number(right.toFixed(1)),
+                      diff: Number(diff.toFixed(1)),
+                      width: Number(r.width.toFixed(1))
+                    });
+                  }
+                });
+              }
+              return bad;
+            }"""
+        )
+        check.ok(
+            not mobile_shells,
+            "mobile content shells are centered within viewport",
+            str(mobile_shells[:5]),
+        )
+
     if theme == "light" and (url.endswith("/") or url.endswith("index.html")):
         hero_bg = await page.eval_on_selector(
             "#hero-section",
