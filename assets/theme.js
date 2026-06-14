@@ -9,19 +9,54 @@
   var VANTA_CFG = {
     dark: {
       el: '#vanta-bg',
-      mouseControls: false, touchControls: false, gyroControls: false,
-      color: 0x0077cc, backgroundColor: 0x020b18,
-      points: 10.0, maxDistance: 26.0, spacing: 20.0,
+      mouseControls: true, touchControls: true, gyroControls: false,
+      color: 0x00aaff, backgroundColor: 0x020b18,
+      points: 11.0, maxDistance: 28.0, spacing: 19.0,
       showDots: true, minHeight: 200.0, minWidth: 200.0, scale: 1.0, scaleMobile: 1.0,
     },
     light: {
       el: '#vanta-bg',
-      mouseControls: false, touchControls: false, gyroControls: false,
-      color: 0x1a77cc, backgroundColor: 0xe8f1fc,
-      points: 11.0, maxDistance: 21.0, spacing: 19.0,
+      mouseControls: true, touchControls: true, gyroControls: false,
+      color: 0x005fb8, backgroundColor: 0xf2f7ff,
+      points: 12.0, maxDistance: 23.0, spacing: 18.0,
       showDots: true, minHeight: 200.0, minWidth: 200.0, scale: 1.0, scaleMobile: 1.0,
     },
   };
+
+
+  var interactionsBound = false;
+
+  function bindGlobalVantaInteractions() {
+    if (interactionsBound) return;
+    interactionsBound = true;
+
+    function syncPointer(clientX, clientY) {
+      var eff = window.__vantaEffect;
+      if (!eff) return;
+      eff.mouseX = eff.rcMouseX = clientX;
+      eff.mouseY = eff.rcMouseY = clientY;
+      if (typeof eff.onMouseMove === 'function') {
+        try { eff.onMouseMove(clientX, clientY); } catch (e) {}
+      }
+    }
+
+    document.addEventListener('pointermove', function (e) {
+      syncPointer(e.clientX, e.clientY);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+      if (e.touches && e.touches[0]) syncPointer(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    document.addEventListener('pointerdown', function (e) {
+      syncPointer(e.clientX, e.clientY);
+      var bg = document.getElementById('vanta-bg');
+      if (!bg) return;
+      bg.classList.remove('vanta-pulse');
+      void bg.offsetWidth;
+      bg.classList.add('vanta-pulse');
+    }, { passive: true });
+  }
 
   function reinitVanta(theme) {
     if (typeof VANTA === 'undefined' || !VANTA.NET) return;
@@ -32,6 +67,7 @@
     }
     try {
       window.__vantaEffect = VANTA.NET(VANTA_CFG[theme] || VANTA_CFG.dark);
+      bindGlobalVantaInteractions();
     } catch (e) {}
   }
 

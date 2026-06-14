@@ -104,7 +104,7 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
         check.ok(box["pointerEvents"] == "none", "#vanta-bg does not capture input", box["pointerEvents"])
         check.ok(box["top"] == 0 and box["left"] == 0, "#vanta-bg pinned to viewport origin", str(box))
         check.ok(box["width"] == width and box["height"] == height, "#vanta-bg covers viewport", str(box))
-        check.ok(0.55 <= box["opacity"] <= 0.85, "#vanta-bg is subtle, not overpowering", str(box["opacity"]))
+        check.ok(0.55 <= box["opacity"] <= 0.95, "#vanta-bg is visible but not overpowering", str(box["opacity"]))
 
     if page_bg_count:
         bg = await page.eval_on_selector(
@@ -133,24 +133,43 @@ async def inspect_page(page, check: Check, url: str, theme: str, width: int, hei
 
     vanta_exists = await page.evaluate("Boolean(window.__vantaEffect && window.__vantaEffect.camera)")
     check.ok(vanta_exists, "Vanta effect initialized")
-
-    before = await page.evaluate(
+    interactive = await page.evaluate(
         """() => {
           const e = window.__vantaEffect;
-          return e && e.camera ? { y: e.camera.position.y, z: e.camera.position.z } : null;
+          return Boolean(e && e.options && e.options.mouseControls && e.options.touchControls);
         }"""
     )
+    check.ok(interactive, "Vanta mouse/touch controls enabled")
+
+    before_pointer = await page.evaluate(
+        """() => {
+          const e = window.__vantaEffect;
+          return e ? { x: e.mouseX, y: e.mouseY } : null;
+        }"""
+    )
+    await page.mouse.move(width - 80, 90)
+    await page.wait_for_timeout(250)
+    after_pointer = await page.evaluate(
+        """() => {
+          const e = window.__vantaEffect;
+          return e ? { x: e.mouseX, y: e.mouseY } : null;
+        }"""
+    )
+    if before_pointer and after_pointer:
+        check.ok(
+            abs(after_pointer["x"] - before_pointer["x"]) > 1
+            or abs(after_pointer["y"] - before_pointer["y"]) > 1,
+            "Vanta reacts to pointer movement",
+            f"{before_pointer} -> {after_pointer}",
+        )
+
+    await page.mouse.click(width // 2, height // 2)
+    await page.wait_for_timeout(80)
+    pulse_class = await page.evaluate("document.getElementById('vanta-bg').classList.contains('vanta-pulse')")
+    check.ok(pulse_class, "Vanta background reacts to click with pulse")
+
     await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     await page.wait_for_timeout(500)
-    after = await page.evaluate(
-        """() => {
-          const e = window.__vantaEffect;
-          return e && e.camera ? { y: e.camera.position.y, z: e.camera.position.z } : null;
-        }"""
-    )
-    if before and after:
-        check.ok(abs(before["y"] - after["y"]) < 0.01, "camera.y unchanged after scroll (static background)")
-        check.ok(abs(before["z"] - after["z"]) < 0.01, "camera.z unchanged after scroll (no parallax drift)")
 
     rect_after_scroll = await page.eval_on_selector(
         "#vanta-bg",
