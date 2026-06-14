@@ -19,10 +19,9 @@
   <link rel="alternate" hreflang="x-default" href="https://integratech-systems.github.io/">
 </head>
 <body data-page="index">
-  <!-- Fixed background layers: gradient → Vanta mesh → data packets -->
+  <!-- Fixed background layers: gradient → static Vanta mesh -->
   <div id="page-bg" aria-hidden="true"></div>
   <div id="vanta-bg" aria-hidden="true"></div>
-  <canvas id="data-canvas" aria-hidden="true"></canvas>
   <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="index.html">IntegraTech</a>
@@ -483,53 +482,6 @@
       document.querySelectorAll('[data-aos]').forEach(function(el) { el.removeAttribute('data-aos'); });
     }
 
-    // ── Vanta.js NET — animated mesh, transparent background, full-page parallax
-    if (typeof VANTA !== 'undefined' && VANTA.NET) {
-      var _light = document.documentElement.getAttribute('data-theme') === 'light';
-      window.__vantaEffect = VANTA.NET({
-        el:              '#vanta-bg',
-        mouseControls:   true,
-        touchControls:   true,
-        gyroControls:    false,
-        color:           _light ? 0x1a88dd : 0x0088ee,
-        backgroundColor: _light ? 0xe8f1fc : 0x020b18,
-        points:          _light ? 14.0 : 12.0,
-        maxDistance:     _light ? 22.0 : 28.0,
-        spacing:         _light ? 16.0 : 18.0,
-        showDots:        true,
-      });
-      // Make THREE.js canvas transparent so #page-bg gradient shows through
-      // Vanta uses alpha:true renderer — setClearColor(color, 0) removes solid bg
-      (function _clearVantaBg() {
-        var eff = window.__vantaEffect;
-        if (eff && eff.renderer) {
-          eff.renderer.setClearColor(0x000000, 0);
-        } else {
-          setTimeout(_clearVantaBg, 80);
-        }
-      })();
-    }
-
-    // ── Scroll parallax — drift Vanta camera for infinite-space depth
-    (function () {
-      var ticking = false;
-      window.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () {
-          var eff = window.__vantaEffect;
-          if (eff && eff.camera) {
-            var frac = window.scrollY /
-              Math.max(1, document.body.scrollHeight - window.innerHeight);
-            // Gentle upward drift + slight zoom-out as user scrolls down
-            eff.camera.position.y  = -frac * 35;
-            eff.camera.position.z  = 160 + frac * 40;
-          }
-          ticking = false;
-        });
-      }, { passive: true });
-    })();
-
     // ── Typed.js — typewriter effect, language-aware
     if (typeof Typed !== 'undefined') {
       function _getTypedStrings() {
@@ -754,159 +706,5 @@
   })();
   </script>
 
-  <!-- Data packets — glowing lights travel along the Vanta graph edges -->
-  <script>
-  (function () {
-    'use strict';
-    var canvas = document.getElementById('data-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var W = 0, H = 0;
-    var nodes = [], edges = [], packets = [];
-
-    function setSize() {
-      W = canvas.width  = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    }
-
-    // Evenly-distributed fallback node positions (golden-ratio spiral)
-    function makeFallbackNodes() {
-      var N = 20, phi = 2.399963; // golden angle rad
-      var pts = [];
-      for (var i = 0; i < N; i++) {
-        pts.push([ 0.07 + ((i * 0.618034) % 0.86),
-                   0.07 + ((i * phi / (2 * Math.PI)) % 0.86) ]);
-      }
-      return pts;
-    }
-
-    // Project Vanta's THREE.js node positions to normalised screen coords
-    function getVantaNodes() {
-      var eff = window.__vantaEffect;
-      if (!eff || !eff.points || !eff.camera || !window.THREE) return null;
-      try {
-        var out = [], pts = eff.points;
-        for (var i = 0; i < pts.length; i++) {
-          var p = pts[i];
-          var v = new THREE.Vector3(+p.x || 0, +p.y || 0, +p.z || 0);
-          v.project(eff.camera);
-          var sx = (v.x + 1) / 2, sy = (1 - (v.y + 1) / 2);
-          if (sx > 0.02 && sx < 0.98 && sy > 0.02 && sy < 0.98)
-            out.push([sx, sy]);
-        }
-        if (out.length >= 6) return out;
-      } catch (e) {}
-      return null;
-    }
-
-    function buildEdges(pts) {
-      var es = [], maxD = 0.3 * Math.sqrt(W * W + H * H);
-      for (var a = 0; a < pts.length; a++)
-        for (var b = a + 1; b < pts.length; b++) {
-          var dx = (pts[a][0] - pts[b][0]) * W,
-              dy = (pts[a][1] - pts[b][1]) * H;
-          if (Math.sqrt(dx*dx + dy*dy) < maxD) es.push([a, b]);
-        }
-      return es;
-    }
-
-    function accentPalette() {
-      var light = document.documentElement.getAttribute('data-theme') === 'light';
-      return light
-        ? ['rgba(0,90,210,',  'rgba(0,140,80,',  'rgba(80,40,200,']
-        : ['rgba(0,180,255,', 'rgba(0,255,160,', 'rgba(120,160,255,'];
-    }
-
-    function spawn() {
-      if (packets.length >= 14 || !edges.length) return;
-      var pal = accentPalette();
-      var ei  = Math.floor(Math.random() * edges.length);
-      var fwd = Math.random() > .5;
-      packets.push({
-        ei: ei, t: fwd ? 0 : 1, dir: fwd ? 1 : -1,
-        spd: 0.002 + Math.random() * 0.003,
-        c: pal[Math.floor(Math.random() * pal.length)],
-        sz: 2.8 + Math.random() * 2.2,
-        trail: []
-      });
-    }
-
-    var lastSync = 0;
-    function sync() {
-      var now = Date.now();
-      if (now - lastSync < 3500) return;
-      lastSync = now;
-      var vn = getVantaNodes();
-      var pts = vn || makeFallbackNodes();
-      var es  = buildEdges(pts);
-      if (es.length) { nodes = pts; edges = es; packets = []; }
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      sync();
-      if (Math.random() < 0.045) spawn();
-
-      for (var i = packets.length - 1; i >= 0; i--) {
-        var pk = packets[i];
-        var edge = edges[pk.ei];
-        if (!edge) { packets.splice(i, 1); continue; }
-        var nA = nodes[edge[0]], nB = nodes[edge[1]];
-        if (!nA || !nB) { packets.splice(i, 1); continue; }
-
-        pk.t = Math.max(0, Math.min(1, pk.t + pk.spd * pk.dir));
-        var t  = pk.t;
-        var px = (nA[0] + (nB[0] - nA[0]) * t) * W;
-        var py = (nA[1] + (nB[1] - nA[1]) * t) * H;
-
-        pk.trail.push([px, py]);
-        if (pk.trail.length > 10) pk.trail.shift();
-
-        // Draw fading trail
-        for (var j = 1; j < pk.trail.length; j++) {
-          var a = (j / pk.trail.length) * 0.45;
-          ctx.beginPath();
-          ctx.strokeStyle = pk.c + a + ')';
-          ctx.lineWidth   = (j / pk.trail.length) * pk.sz * 0.5;
-          ctx.lineCap     = 'round';
-          ctx.moveTo(pk.trail[j-1][0], pk.trail[j-1][1]);
-          ctx.lineTo(pk.trail[j  ][0], pk.trail[j  ][1]);
-          ctx.stroke();
-        }
-
-        // Draw glow head
-        ctx.save();
-        ctx.shadowBlur  = 16;  ctx.shadowColor = pk.c + '1)';
-        ctx.fillStyle   = pk.c + '0.85)';
-        ctx.beginPath(); ctx.arc(px, py, pk.sz * 0.65, 0, 2*Math.PI); ctx.fill();
-        ctx.shadowBlur  = 8;   ctx.shadowColor = '#fff';
-        ctx.fillStyle   = 'rgba(255,255,255,0.9)';
-        ctx.beginPath(); ctx.arc(px, py, pk.sz * 0.28, 0, 2*Math.PI); ctx.fill();
-        ctx.restore();
-
-        // Route to next edge at arrival node
-        if (pk.t >= 1 || pk.t <= 0) {
-          var pivot = pk.t >= 1 ? edge[1] : edge[0];
-          var nexts = [];
-          for (var e2 = 0; e2 < edges.length; e2++)
-            if (e2 !== pk.ei && (edges[e2][0] === pivot || edges[e2][1] === pivot))
-              nexts.push(e2);
-          if (nexts.length) {
-            var ni  = nexts[Math.floor(Math.random() * nexts.length)];
-            var atA = edges[ni][0] === pivot;
-            pk.ei = ni; pk.t = atA ? 0 : 1; pk.dir = atA ? 1 : -1; pk.trail = [];
-          } else { packets.splice(i, 1); }
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-
-    setSize();
-    window.addEventListener('resize', function () { setSize(); nodes = []; edges = []; });
-    nodes = makeFallbackNodes(); edges = buildEdges(nodes);
-    for (var s = 0; s < 6; s++) spawn();
-    requestAnimationFrame(draw);
-  }());
-  </script>
 </body>
 </html>

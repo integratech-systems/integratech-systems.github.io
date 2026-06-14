@@ -1,7 +1,6 @@
 /**
  * IntegraTech Systems — Theme Manager
- * Vanta initializes synchronously in index.html inline IIFE (both themes).
- * This file only handles the toggle button click + Vanta reinit on switch.
+ * Owns the single fixed Vanta background on every page + theme switching.
  */
 (function () {
   var STORAGE_KEY = 'it_theme';
@@ -9,14 +8,18 @@
 
   var VANTA_CFG = {
     dark: {
-      el: '#vanta-bg', mouseControls: true, touchControls: true, gyroControls: false,
-      color: 0x0088ee, backgroundColor: 0x020b18,
-      points: 12.0, maxDistance: 28.0, spacing: 18.0, showDots: true,
+      el: '#vanta-bg',
+      mouseControls: false, touchControls: false, gyroControls: false,
+      color: 0x0077cc, backgroundColor: 0x020b18,
+      points: 10.0, maxDistance: 26.0, spacing: 20.0,
+      showDots: true, minHeight: 200.0, minWidth: 200.0, scale: 1.0, scaleMobile: 1.0,
     },
     light: {
-      el: '#vanta-bg', mouseControls: true, touchControls: true, gyroControls: false,
-      color: 0x1a88dd, backgroundColor: 0xe8f1fc,
-      points: 14.0, maxDistance: 22.0, spacing: 16.0, showDots: true,
+      el: '#vanta-bg',
+      mouseControls: false, touchControls: false, gyroControls: false,
+      color: 0x1a77cc, backgroundColor: 0xe8f1fc,
+      points: 11.0, maxDistance: 21.0, spacing: 19.0,
+      showDots: true, minHeight: 200.0, minWidth: 200.0, scale: 1.0, scaleMobile: 1.0,
     },
   };
 
@@ -29,12 +32,6 @@
     }
     try {
       window.__vantaEffect = VANTA.NET(VANTA_CFG[theme] || VANTA_CFG.dark);
-      // Remove solid bg — let gradient from #page-bg show through
-      (function _clearBg() {
-        var eff = window.__vantaEffect;
-        if (eff && eff.renderer) { eff.renderer.setClearColor(0x000000, 0); }
-        else { setTimeout(_clearBg, 80); }
-      })();
     } catch (e) {}
   }
 
@@ -57,6 +54,7 @@
     });
   }
 
+  reinitVanta(document.documentElement.getAttribute('data-theme') || DEFAULT);
   window.__setTheme = applyTheme;
 }());
 
