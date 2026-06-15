@@ -17,7 +17,10 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-SITE_DIR="$(dirname "$SCRIPT_DIR")/integratech-systems.github.io"
+SITE_DIR="$(dirname "$SCRIPT_DIR")"
+if [[ ! -d "$SITE_DIR/assets" ]]; then
+  SITE_DIR="$(dirname "$SCRIPT_DIR")/integratech-systems.github.io"
+fi
 I18N_FILE="$SITE_DIR/assets/i18n.js"
 LIVE_URL="https://integratech-systems.github.io"
 LANGS=(en ru kz de fr)
