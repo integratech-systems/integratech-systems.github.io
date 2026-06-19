@@ -10,14 +10,14 @@
     dark: {
       el: '#vanta-bg',
       mouseControls: true, touchControls: true, gyroControls: false,
-      color: 0x0055aa, backgroundColor: 0x010c1a,
+      color: 0x0077cc, backgroundColor: 0x010c1a,
       points: 10.0, maxDistance: 26.0, spacing: 21.0,
       showDots: true, minHeight: 200.0, minWidth: 200.0, scale: 1.0, scaleMobile: 1.0,
     },
     light: {
       el: '#vanta-bg',
       mouseControls: true, touchControls: true, gyroControls: false,
-      color: 0x4a90c4, backgroundColor: 0xeef4fc,
+      color: 0x2277cc, backgroundColor: 0xeef4fc,
       points: 10.0, maxDistance: 22.0, spacing: 22.0,
       showDots: true, minHeight: 200.0, minWidth: 200.0, scale: 1.0, scaleMobile: 1.0,
     },
