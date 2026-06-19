@@ -1491,9 +1491,9 @@ body, .site-header, .panel, .terminal-card,
 
   /* Right side: theme toggle + lang-switcher shrink on mobile */
   .theme-toggle, .lang-btn { width: 34px; height: 34px; }
-  .lang-code { display: none; } /* hide "EN" text, keep flag only */
+  #lang-code { display: none; } /* hide "EN" text, keep flag only — must use #id not .class */
   .lang-chevron { display: none; }
-  .lang-btn { padding: .32rem .4rem; gap: .2rem; }
+  .lang-btn { padding: .32rem .4rem; gap: .2rem; overflow: hidden; }
 
   /* Hero */
   .hero { padding-top: 4.5rem; padding-bottom: 3rem; }
