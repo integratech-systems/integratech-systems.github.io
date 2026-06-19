@@ -37,11 +37,11 @@ body {
 }
 #vanta-bg {
   position: fixed; inset: 0; z-index: -3; pointer-events: none;
-  opacity: .42;
+  opacity: .48;
   transition: opacity .25s ease, filter .25s ease;
 }
 [data-theme="light"] #vanta-bg {
-  opacity: .48;
+  opacity: .55;
 }
 #vanta-bg.vanta-pulse {
   animation: vantaPulse .7s ease-out;
