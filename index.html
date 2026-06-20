@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <!-- Preload dial-up intro for instant playback -->
+  <link rel="preload" href="assets/dialup-short.opus" as="fetch" type="audio/ogg" crossorigin>
+  <link rel="preload" href="assets/dialup-short.mp3" as="fetch" type="audio/mpeg" crossorigin>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="alternate" hreflang="en" href="https://integratech-systems.github.io/">
   <link rel="alternate" hreflang="ru" href="https://integratech-systems.github.io/?lang=ru">
@@ -706,38 +709,87 @@
   })();
   </script>
 
-  <!-- Dial-up modem intro sound — plays once per session, index page only -->
+  <!-- 🔊 IntegraTech Audio System — dial-up intro + interactive UI sounds -->
   <script>
   (function(){
-    if(sessionStorage.getItem('it_dialup')) return;
-    var a = document.createElement('audio');
-    a.volume = 0.35;
-    a.preload = 'auto';
-    var s1 = document.createElement('source');
-    s1.src = 'assets/dialup.opus';
-    s1.type = 'audio/ogg; codecs=opus';
-    var s2 = document.createElement('source');
-    s2.src = 'assets/dialup.mp3';
-    s2.type = 'audio/mpeg';
-    a.appendChild(s1);
-    a.appendChild(s2);
-    function play(){
-      var p = a.play();
-      if(p && p.then) p.then(mark).catch(fallback);
-      else mark();
+    /* ── Audio engine: pool tiny Audio objects for zero-latency playback ── */
+    var sfx = {};
+    var canPlay = false;
+    var opus = (new Audio()).canPlayType('audio/ogg; codecs=opus') !== '';
+
+    function makeSrc(name){ return 'assets/' + name + (opus ? '.opus' : '.mp3'); }
+
+    function preload(name){
+      var a = new Audio();
+      a.preload = 'auto';
+      a.src = makeSrc(name);
+      sfx[name] = a;
+      return a;
     }
-    function mark(){ sessionStorage.setItem('it_dialup','1'); unbind(); }
-    function fallback(){
-      var evts = ['click','scroll','keydown','touchstart'];
-      evts.forEach(function(e){ document.addEventListener(e, once, {once:true, passive:true}); });
-    }
-    function once(){ play(); }
-    function unbind(){
-      ['click','scroll','keydown','touchstart'].forEach(function(e){
-        document.removeEventListener(e, once);
+
+    /* Preload all sounds */
+    var dialup = preload('dialup-short');
+    preload('tick');
+    preload('hover');
+    preload('toggle');
+
+    /* ── Dial-up intro: plays on every index page load ── */
+    dialup.volume = 0.3;
+
+    function playDialup(){
+      dialup.currentTime = 0;
+      var p = dialup.play();
+      if(p && p.catch) p.catch(function(){
+        /* Autoplay blocked — play on first interaction */
+        var evts = ['click','scroll','keydown','touchstart'];
+        function once(){
+          evts.forEach(function(e){ document.removeEventListener(e, once); });
+          canPlay = true;
+          dialup.currentTime = 0;
+          dialup.play().catch(function(){});
+        }
+        evts.forEach(function(e){ document.addEventListener(e, once, {once:true, passive:true}); });
       });
+      if(p && p.then) p.then(function(){ canPlay = true; });
     }
-    play();
+    playDialup();
+
+    /* ── UI sound helpers ── */
+    function playSfx(name, vol){
+      if(!canPlay) return;
+      var a = sfx[name];
+      if(!a) return;
+      /* Clone for overlapping plays */
+      if(!a.paused){ a = a.cloneNode(); a.volume = vol || 0.15; }
+      else { a.volume = vol || 0.15; }
+      a.currentTime = 0;
+      a.play().catch(function(){});
+    }
+
+    /* ── Interactive sounds on hover/click ── */
+    document.addEventListener('DOMContentLoaded', function(){
+      /* Nav link hovers */
+      document.querySelectorAll('.site-nav a, .button, .text-link').forEach(function(el){
+        el.addEventListener('mouseenter', function(){ playSfx('hover', 0.12); }, {passive:true});
+      });
+
+      /* Card hovers */
+      document.querySelectorAll('article.panel, .mini-metrics li, .tech-tag').forEach(function(el){
+        el.addEventListener('mouseenter', function(){ playSfx('tick', 0.08); }, {passive:true});
+      });
+
+      /* Theme toggle */
+      var themeBtn = document.querySelector('.theme-toggle');
+      if(themeBtn){
+        themeBtn.addEventListener('click', function(){ playSfx('toggle', 0.2); }, {passive:true});
+      }
+
+      /* Lang switcher */
+      var langBtn = document.querySelector('.lang-btn');
+      if(langBtn){
+        langBtn.addEventListener('click', function(){ playSfx('tick', 0.15); }, {passive:true});
+      }
+    });
   })();
   </script>
 
