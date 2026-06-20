@@ -706,5 +706,40 @@
   })();
   </script>
 
+  <!-- Dial-up modem intro sound — plays once per session, index page only -->
+  <script>
+  (function(){
+    if(sessionStorage.getItem('it_dialup')) return;
+    var a = document.createElement('audio');
+    a.volume = 0.35;
+    a.preload = 'auto';
+    var s1 = document.createElement('source');
+    s1.src = 'assets/dialup.opus';
+    s1.type = 'audio/ogg; codecs=opus';
+    var s2 = document.createElement('source');
+    s2.src = 'assets/dialup.mp3';
+    s2.type = 'audio/mpeg';
+    a.appendChild(s1);
+    a.appendChild(s2);
+    function play(){
+      var p = a.play();
+      if(p && p.then) p.then(mark).catch(fallback);
+      else mark();
+    }
+    function mark(){ sessionStorage.setItem('it_dialup','1'); unbind(); }
+    function fallback(){
+      var evts = ['click','scroll','keydown','touchstart'];
+      evts.forEach(function(e){ document.addEventListener(e, once, {once:true, passive:true}); });
+    }
+    function once(){ play(); }
+    function unbind(){
+      ['click','scroll','keydown','touchstart'].forEach(function(e){
+        document.removeEventListener(e, once);
+      });
+    }
+    play();
+  })();
+  </script>
+
 </body>
 </html>
